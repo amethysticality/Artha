@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/webstorm-icon-logo.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WS playground</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .container {
+            display: grid;
+            grid-template-areas:
+    "header menu"
+    "content menu"
+    "main menu"
+    "footer footer";
+            gap: 0px;
+            background-color: gray;
+            padding: 5px;
+        }
+        .container div {
+            background-color: white;
+            padding: 10px;
+        }
+        .container div.header {
+            grid-area: header;
+            text-align: center;
+            padding: clamp(50px, 20vw, 200px);
+            background-color: #353535;
+        }
+        .container div.menu {
+            grid-area: menu;
+        }
+        .container div.content {
+            grid-area: content;
+        }
+        .container div.footer {
+            grid-area: footer;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div class="header"style="height:clamp(20px, 20vw, 100px); border-top-left-radius: 10px;border-top-right-radius: 10px; color: #353535; background-color: #353535; opacity: 50%; visibility: visible;"></div>
+<div class="content"style="padding-left: 20px; height:clamp(200px,35vw,400px); align-items: center;background-image: url('https://uploads.onecompiler.io/442ba68yj/442ba6d66/nkjiu.png');">
+    <span class="cycling-textAb" style="line-height: max(clamp(10px,10vw,100px))"></span><br>
+    <div style="display: inline-flex;font-size: clamp(10px, 2.5vw, 30px);line-height: max(10px);">
+        <p style="display: inline; margin: 0px; line-height: 20px">Learn About The Inspiration and Thought Process Behind the Website, and Additional We Would Add If Given the Chance</p>
+    </div>
+    <div style="padding-top: clamp(1px,15vw,15px);">
+        <button class="nav_button"><a href="index.html" target="_blank">Return to Homepage</a></button>
+    </div>
+</div>
+<div class="main">
+    <style>
+        .container {
+            display: grid; /* Enables CSS Grid layout */
+            /* Creates two columns, each taking up 1 fractional unit (1fr), resulting in a 50%/50% split. */
+            grid-template-columns: 1fr 1fr;
+            width: 100%;
+            background-color: inherit;
+        }
+
+        .left-side, .right-side {
+            background-color: inherit;
+            flex-grow: 1; /* Tells both elements to grow and take up an equal fraction of the space */
+            /* You can remove any fixed 'width: 50%;' if you had one, as 'flex-grow: 1' handles it */
+        }
+    </style>
+    <div class="container">
+        <div class="left_side" style="background-color: inherit;">
+            <h1>What Is Upcoming?</h1>
+            <p style="font-family: Sylfaen,serif">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;As we move forward with the development of this app, we want to include more interactive features, like synced lyrics, quizzes, and a more sophisticated way of sorting languages, songs, and lessons. This could be done by implementing search functionalities and tagging systems.</p>
+        </div>
+        <div class="left_side" style="background-color: inherit;">
+            <h1>Inspiration for the Design of the Website</h1>
+            <p style="font-family: Sylfaen,serif">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Thinking about the implementation of this website had me think about the evolution of language itself, and specifically, slang. Especially in English, many of our modern slang terms come from Harlem ballroom culture, a cultural movement that often invovled underground clubs in New York and London, often ran by the fringes of society. To pay homage to them, I wanted to inspire my site off of early 2000s club websites and forums, hence the blacks and simplistic design, albeit with a few added touches.</p>
+        </div>
+    </div>
+</div>
+<div class="menu"style="width: 50px;height: 50px;">
+    <input id="toggle" type="checkbox" hidden="hidden">
+    <label for="toggle" class="hamburger">
+        <div class="top"></div>
+        <div class="mid"></div>
+        <div class="bot"></div>
+    </label>
+
+    <div class="nav">
+        <div class="nav-wrapper">
+            <nav>
+                <a href="index.html" style="font-size: inherit">HOME</a><br>
+                <a href="about.html"style="font-size: inherit">DEVELOPMENT</a><br>
+                <a href="Language%20Pages/french.html" style="font-size: inherit">FRENCH</a><br>
+                <a href="Language%20Pages/telugu.html" style="font-size: inherit">TELUGU</a><br>
+                <a href="Language%20Pages/korean.html" style="font-size: inherit">KOREAN</a><br>
+                <a href="Language%20Pages/mandarin.html" style="font-size: inherit">MANDARIN CHINESE</a><br>
+                <a href="Language%20Pages/spanish.html" style="font-size: inherit">SPANISH</a><br>
+            </nav>
+        </div>
+    </div>
+</div>
+</body>
+</html>

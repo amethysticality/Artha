@@ -1,0 +1,673 @@
+/*============================================================
+  BASE STYLES
+============================================================*/
+
+body {
+    /* Background and text colors for a dark theme */
+    background-color: black;
+    color: white;
+    /* Main body font */
+    font-family: "Engravers MT";
+}
+
+p {
+    font-family: "Engravers MT", "Bahnschrift", sans-serif;
+    font-size: clamp(10px, 1.5vw, 20px);
+    color: white;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/*============================================================
+  NAVIGATION ELEMENTS
+============================================================*/
+
+.nav_button {
+    /* Sizing and Spacing */
+    padding: clamp(5px, 5vw, 15px);
+    margin-top: clamp(2px, 2vw, 10px);
+    margin-bottom: clamp(2px, 2vw, 10px);
+    /* Appearance */
+    background-color: black;
+    color: white;
+    border-radius: clamp(5px, 5vw, 20px);
+    border-style: hidden;
+    /* Typography */
+    font-family: "Engravers MT", "Bahnschrift", sans-serif;
+    font-size: clamp(10px, 1.5vw, 20px);
+    /* Interaction */
+    transition: all 0.3s ease-in-out;
+}
+
+.nav_button:hover {
+    background-color: white;
+    color: black;
+}
+
+details {
+    background-color: #101010;
+    border-radius: 12px;
+    padding: 5px;
+}
+
+summary {
+    list-style: none;
+    background-color: #191919;
+    border-radius: 12px;
+    padding: 5px;
+}
+
+/* Collapsible Details State */
+#toggle:checked ~ .summary {
+    transition: all 0.2s ease-in-out;
+}
+
+/*============================================================
+   NAVIGATION TOGGLE (HAMBURGER MENU)
+============================================================*/
+
+.hamburger {
+    position: absolute;
+    /* 1. Use the same value for top and right for equal spacing */
+    top: 2rem; 
+    right: 2rem;
+    
+    /* 2. Removed the negative margins that were causing misalignment */
+    
+    /* 3. Match the width to the internal divs (3em) */
+    width: 3em; 
+    height: 40px;
+    z-index: 5;
+    cursor: pointer; /* Added for better UX */
+}
+
+.hamburger div {
+    position: relative;
+    width: 3em; /* Matches the parent width now */
+    height: 3px;
+    background-color: white;
+    margin-top: 8px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* --------------------
+   Active States (Menu Open)
+-------------------- */
+
+/* Hides the top bar on active state (for smooth transition effect) */
+#toggle:checked + .hamburger .top,
+#toggle:checked + .hamburger .bot {
+    opacity: 0;
+}
+
+/* Slide in and scale the navigation menu when active */
+#toggle:checked + .hamburger + .nav {
+    top: 0;
+    transform: scale(1);
+}
+
+/*============================================================
+  NAVIGATION MENU (.nav and contents)
+============================================================*/
+
+.nav {
+    position: fixed;
+    width: 300px; /* Set a specific width for a side-drawer effect */
+    height: 100%;
+    background-color: #353535;
+    
+    /* Position off-screen to the right */
+    top: 0;
+    right: -300px; 
+    left: auto; /* Overrides your previous left: 80% */
+    
+    /* Transition and stacking */
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    z-index: 4;
+    
+    /* Ensure content stays inside or scrolls if too tall */
+    overflow-x: hidden; 
+    overflow-y: auto;
+}
+
+/* Slide in when checkbox is toggled */
+#toggle:checked + .hamburger + .nav {
+    right: 0;
+    transform: scale(1); /* Keeps your existing scale logic */
+}
+
+.nav-wrapper {
+    /* Container for menu items, allowing scroll if content overflows */
+    position: relative;
+    overflow: hidden;
+    overflow-y: auto;
+    height: 100%;
+    padding: 40px;
+}
+
+nav {
+    /* Alignment of the navigation list */
+    text-align: left;
+}
+
+nav a {
+    position: relative;
+    display: block; /* Block allows them to take full width of the drawer */
+    text-decoration: none;
+    color: gray;
+    padding: 1em 0;
+    font-size: clamp(20px, 4vw, 30px); /* Fixed clamp order */
+    letter-spacing: 1px;
+    transition: color 0.2s ease-in-out;
+
+    /* Overflow Logic */
+    white-space: nowrap;      /* Prevents text from wrapping to a second line */
+    overflow: hidden;         /* Hides the text that goes beyond the container */
+    text-overflow: ellipsis;  /* Adds "..." at the end of clipped text */
+    max-width: 100%;          /* Ensures it respects the drawer width */
+}
+
+/* Pseudo-element for the line/indicator next to the link */
+nav a::before {
+    content: '';
+    position: absolute;
+    left: -0.5em;
+    width: 0.25em;
+    height: 0; /* Initial state: hidden */
+    background-color: white;
+    /* Transition for line height expansion on hover */
+    transition: all 0.2s ease-in-out;
+}
+
+/* Hover state for the link text */
+nav a:hover {
+    color: white;
+}
+
+/* Hover state for the link indicator: expands its height */
+nav a:hover::before {
+    height: 100%;
+}
+
+/*============================================================
+  ANIMATIONS (CYCLING TEXT)
+============================================================*/
+
+/* --------------------
+   Cycling Text 1 (Large - Artha)
+-------------------- */
+
+.cycling-text {
+    position: relative;
+    height: 6rem;
+    color: white;
+    font-size: clamp(30px, 10vw, 130px);
+}
+
+.cycling-text::after {
+    content: "";
+    animation-name: cycleText;
+    animation-duration: 1.75s;
+    line-height: clamp(9px, 20vw, 200px);
+    animation-iteration-count: infinite;
+}
+
+@keyframes cycleText {
+    0%   { content: "Artha";}
+    20%   { content: "Artha"; font-family: "Engravers MT"; }
+    33%  { content: "అర్థ"; font-family: Vani;}
+    66%  { content: "알다"; font-family: "Hakgyoansim Byeolbichhaneul OTF"; }
+    100% { content: "Arthà"; }
+}
+
+/* --------------------
+   Cycling Text 2 (Small - Context)
+-------------------- */
+
+.cycling-text2 {
+    display: inline-block;
+    position: relative;
+    color: white;
+    font-size: clamp(10px, 2.5vw, 30px);
+}
+
+.cycling-text2::after {
+    content: "";
+    animation-name: cycleText2;
+    animation-duration: 1.75s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes cycleText2 {
+    0%   { content: "context"; }
+    20%   { content: "context"; font-family: "Engravers MT";}
+    33%  { content: "సందర్భం"; font-family: Vani; }
+    66%  { content: "맥락"; font-family: "Hakgyoansim Byeolbichhaneul OTF"; }
+    100% { content: "contèxte"; }
+}
+
+/* --------------------
+   Cycling Text Fr (Large - French)
+-------------------- */
+
+.cycling-textFr {
+    position: relative;
+    height: 6rem;
+    color: white;
+    font-size: clamp(30px, 10vw, 130px);
+}
+
+.cycling-textFr::after {
+    content: "";
+    animation-name: cycleTextFr;
+    animation-duration: 3s;
+    line-height: clamp(9px, 20vw, 200px);
+    animation-iteration-count: infinite;
+}
+
+@keyframes cycleTextFr {
+    0%   { content: "Français"; }
+    50%   { content: "French"; font-family: "Engravers MT";}
+    100% { content: "Français"; }
+}
+
+/* --------------------
+   Cycling Text Ab (Large - Development)
+-------------------- */
+
+.cycling-textAb {
+    position: relative;
+    height: 6rem;
+    color: white;
+    font-size: clamp(20px, 10vw, 110px);
+}
+
+.cycling-textAb::after {
+    content: "";
+    animation-name: cycleTextAb;
+    animation-duration: 1.75s;
+    line-height: clamp(9px, 20vw, 200px);
+    animation-iteration-count: infinite;
+}
+
+@keyframes cycleTextAb {
+    0%   { content: "Development";}
+    20%   { content: "Development"; font-family: "Engravers MT"; }
+    33%  { content: "అభివృద్ధి"; font-family: Vani;}
+    66%  { content: "발달"; font-family: "Hakgyoansim Byeolbichhaneul OTF"; }
+    100% { content: "Développement"; }
+}
+
+/* --------------------
+   Cycling Text Cn (Large - Chinese)
+-------------------- */
+
+.cycling-textCn {
+    position: relative;
+    height: 6rem;
+    text-align: center;
+    color: white;
+    font-size: clamp(30px, 10vw, 130px);
+    overflow: hidden;
+}
+
+.cycling-textCn::after {
+    content: "";
+    animation-name: cycleTextCn;
+    animation-duration: 4.5s;
+    line-height: 6rem; /* Aligned with parent height */
+    animation-iteration-count: infinite;
+    font-family: sans-serif;
+}
+
+@keyframes cycleTextCn {
+    0%   {
+        content: "普通话";
+        font-family: 'SimSun';"Microsoft YaHei", "PingFang SC", serif;
+    }
+    33% {
+        content: "Mandarin";
+        font-family: "Engravers MT", serif;
+    }
+    66% {
+        content: "Pǔtōnghuà";
+        font-family: "Engravers MT",serif;
+    }
+    100% {
+        content: "普通话";
+        font-family: 'SimSun';"Microsoft YaHei", "PingFang SC", serif;
+    }
+}
+
+/* --------------------
+   Cycling Text Fr 2 (Small - French/Learn)
+-------------------- */
+
+.cycling-textFr2 {
+    display: inline-block;
+    position: relative;
+    color: white;
+    font-size: clamp(10px, 2.5vw, 30px);
+}
+
+.cycling-textFr2::after {
+    content: "";
+    animation-name: cycleTextFr2;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes cycleTextFr2 {
+    0%   { content: "Apprenez le français avec Nilusi Nissanka"; }
+    50%   { content: "Learn French with Nilusi Nissanka"; font-family: "Engravers MT";}
+    100% { content: "Apprenez le français avec Nilusi Nissanka"; }
+}
+
+/* --------------------
+   Cycling Text Cn 2 (Small - Chinese/Learn)
+-------------------- */
+
+.cycling-textCn2 {
+    display: inline-block;
+    position: relative;
+    color: white;
+    /* Fluid font size */
+    font-size: clamp(10px, 2.5vw, 30px);
+}
+
+.cycling-textCn2::after {
+    content: "";
+    animation-name: cycleTextCn2;
+    animation-duration: 4.5s; /* Increased duration for 3 distinct steps */
+    animation-iteration-count: infinite;
+}
+
+/* --------------------
+   Cycling Text Cn 2 (Small - Mandarin/Learn)
+-------------------- */
+
+.cycling-textCn2 {
+    display: inline-block;
+    position: relative;
+    color: white;
+    /* Fluid font size */
+    font-size: clamp(10px, 2.5vw, 30px);
+}
+
+.cycling-textCn2::after {
+    content: "";
+    animation-name: cycleTextCn2;
+    animation-duration: 4.5s; /* Consistent duration for 3 distinct steps */
+    animation-iteration-count: infinite;
+}
+
+@keyframes cycleTextCn2 {
+    /* 0% - English */
+    0%   {
+        content: "Learn Mandarin with Yu Yan";
+        font-family: "Engravers MT", serif;
+    }
+
+    /* 33% - Chinese Translation */
+    33% {
+        content: "和喻言一起学普通话"; /* Trans: Hé Yù Yán yīqǐ xué Pǔtōnghuà */
+        font-family: 'SimSun';"Microsoft YaHei", "PingFang SC", sans-serif;
+    }
+
+    /* 66% - Pinyin Transliteration */
+    66% {
+        content: "Hé Yù Yán yīqǐ xué Pǔtōnghuà";
+        font-family: "Engravers MT", serif;
+    }
+
+    /* 100% - Cycle back to English */
+    100% {
+        content: "Learn Mandarin with Yu Yan";
+        font-family: "Engravers MT", serif;
+    }
+}
+.cycling-textTl {
+    position: relative;
+    height: 6rem;
+    color: white;
+    font-size: clamp(30px, 10vw, 130px);
+}
+
+.cycling-textTl::after {
+    content: "";
+    animation-name: cycleTextTl;
+    animation-duration: 3s;
+    line-height: clamp(9px, 20vw, 200px);
+    animation-iteration-count: infinite;
+}
+
+@keyframes cycleTextTl {
+    /* 0% - English */
+    0%   {
+        content: "Telugu";
+        font-family: "Engravers MT", serif;
+    }
+    /* 33% - Native Script */
+    33% {
+        content: "తెలుగు";
+        font-family: Vani, "Nirmala UI", sans-serif;
+        line-height: 100px;
+    }
+    /* 66% - Romanized Transliteration */
+    66% {
+        content: "Telugu";
+        font-family: "Engravers MT", serif;
+    }
+    /* 100% - Loop back to English */
+    100% {
+        content: "Telugu";
+        font-family: "Engravers MT", serif;
+    }
+}
+/* --------------------
+   Cycling Text Tl 2 (Small - Telugu/Learn)
+-------------------- */
+
+.cycling-textTl2 {
+    display: inline-block;
+    position: relative;
+    color: white;
+    font-size: clamp(10px, 2.5vw, 30px);
+}
+
+.cycling-textTl2::after {
+    content: "";
+    animation-name: cycleTextTl2;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes cycleTextTl2 {
+    /* 0% - English */
+    0%   {
+        content: "Learn Telugu with Mohana Bhogaraju";
+        font-family: "Engravers MT", serif;
+    }
+
+    /* 33% - Telugu Characters */
+    33% {
+        content: "మోహన భోగరాజుతో తెలుగు నేర్చుకోండి";
+        line-height: 50px;
+        font-family: Vani, "Nirmala UI", sans-serif;
+    }
+
+    /* 66% - Transliteration (Romanized Telugu) */
+    66% {
+        content: "Telugu nērcukōṇḍi with Mohana Bhogaraju";
+        font-family: "Engravers MT", serif;
+    }
+
+    /* 100% - Cycle back to English */
+    100% {
+        content: "Learn Telugu with Mohana Bhogaraju";
+        font-family: "Engravers MT", serif;
+    }
+}
+.cycling-textEs {
+    position: relative;
+    height: 6rem;
+    color: white;
+    font-size: clamp(30px, 10vw, 130px);
+}
+
+.cycling-textEs::after {
+    content: "";
+    animation-name: cycleTextEs;
+    animation-duration: 3s;
+    line-height: clamp(9px, 20vw, 200px);
+    animation-iteration-count: infinite;
+}
+
+@keyframes cycleTextEs {
+    /* 0% - English */
+    0%   {
+        content: "Spanish";
+        font-family: "Engravers MT", serif;
+    }
+    /* 33% - Native word (Español) */
+    33% {
+        content: "Español";
+        font-family: "Engravers MT", serif;
+    }
+    /* 66% - Native word (Castellano - alternative) */
+    66% {
+        content: "Castellano";
+        font-family: "Engravers MT", serif;
+    }
+    /* 100% - Loop back to English */
+    100% {
+        content: "Spanish";
+        font-family: "Engravers MT", serif;
+    }
+}
+/* --------------------
+   Cycling Text Es 2 (Small - Spanish/Learn)
+-------------------- */
+
+.cycling-textEs2 {
+    display: inline-block;
+    position: relative;
+    color: white;
+    font-size: clamp(10px, 2.5vw, 30px);
+}
+
+.cycling-textEs2::after {
+    content: "";
+    animation-name: cycleTextEs2;
+    animation-duration: 4.5s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes cycleTextEs2 {
+    /* 0% - English */
+    0%   {
+        content: "Learn Spanish with Bratty";
+        font-family: "Engravers MT", serif;
+    }
+
+    /* 33% - Spanish Phrase */
+    33% {
+        content: "Aprende español con Bratty";
+        font-family: "Engravers MT", serif;
+    }
+
+    /* 66% - Transliteration (Pronunciation Guide) */
+    66% {
+        content: "Ah-prehn-day eh-spahn-yohl kohn Bratty";
+        font-family: "Engravers MT", serif;
+    }
+
+    /* 100% - Cycle back to English */
+    100% {
+        content: "Learn Spanish with Bratty";
+        font-family: "Engravers MT", serif;
+    }
+}
+.cycling-textKo {
+    position: relative;
+    height: 6rem;
+    color: white;
+    font-size: clamp(30px, 10vw, 130px);
+}
+
+.cycling-textKo::after {
+    content: "";
+    animation-name: cycleTextKo;
+    animation-duration: 3s;
+    line-height: clamp(9px, 20vw, 200px);
+    animation-iteration-count: infinite;
+}
+
+@keyframes cycleTextKo {
+    /* 0% - English */
+    0%   {
+        content: "Korean";
+        font-family:  "Engravers MT", serif;
+    }
+    /* 33% - Native Script (Hangul) */
+    33% {
+        content: "한국어";
+        font-family: "Hakgyoansim Byeolbichhaneul OTF";"Malgun Gothic", "Nanum Gothic", sans-serif;
+    }
+    /* 66% - Romanized Transliteration */
+    66% {
+        content: "Hangugeo";
+        font-family: "Engravers MT", serif;
+    }
+    /* 100% - Loop back to English */
+    100% {
+        content: "Korean";
+        font-family: "Engravers MT", serif;
+    }
+}
+/* --------------------
+   Cycling Text Ko 2 (Small - Korean/Learn)
+-------------------- */
+
+.cycling-textKo2 {
+    display: inline-block;
+    position: relative;
+    color: white;
+    font-size: clamp(10px, 2.5vw, 30px);
+}
+
+.cycling-textKo2::after {
+    content: "";
+    animation-name: cycleTextKo2;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes cycleTextKo2 {
+    /* 0% - English */
+    0%   {
+        content: "Learn Korean with Lee Hyori";
+        font-family: "Engravers MT", serif;
+    }
+
+    /* 33% - Hangul (Korean Characters) */
+    33% {
+        content: "이효리에게 한국어를 배우세요";
+        font-family: "Hakgyoansim Byeolbichhaneul OTF";"Malgun Gothic", "Nanum Gothic", sans-serif;
+    }
+
+    /* 66% - Transliteration (Romanized Korean) */
+    66% {
+        content: "Hangugeo baeuseyo with Lee Hyori";
+        font-family: "Engravers MT", serif;
+    }
+
+    /* 100% - Cycle back to English */
+    100% {
+        content: "Learn Korean with Lee Hyori";
+        font-family: "Engravers MT", serif;
+    }
+}

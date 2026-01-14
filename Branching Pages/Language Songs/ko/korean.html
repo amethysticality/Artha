@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/webstorm-icon-logo.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WS playground</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .container {
+            display: grid;
+            grid-template-areas:
+    "header menu"
+    "content menu"
+    "main menu"
+    "footer footer";
+            gap: 0px;
+            background-color: gray;
+            padding: 5px;
+        }
+        .container div {
+            background-color: white;
+            padding: 10px;
+        }
+        .container div.header {
+            grid-area: header;
+            text-align: center;
+            padding: clamp(50px, 20vw, 200px);
+            background-color: #353535;
+        }
+        .container div.menu {
+            grid-area: menu;
+        }
+        .container div.content {
+            grid-area: content;
+        }
+        .container div.footer {
+            grid-area: footer;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div class="header"style="height:clamp(20px, 20vw, 100px); border-top-left-radius: 10px;border-top-right-radius: 10px; color: #353535; background-color: #353535; opacity: 50%; visibility: visible;"></div>
+<div class="content"style="padding-left: 20px; height:clamp(300px,35vw,400px); padding-top: 30px; align-items: center;background-image: url('https://uploads.onecompiler.io/442ba68yj/442ba6d66/def29e05-6236-4b20-a9f1-94cf4a192d22.jpg');">
+    <span class="cycling-textKo" style="line-height: max(clamp(110px,30vw,220px)); height: 200px; margin-top: 20px;"></span><br>
+    <div style="display: inline-flex;font-size: clamp(10px, 2.5vw, 50px);line-height: max(10px);">
+        <p class="cycling-textKo2" style="display: inline; margin: 0px;"></p>
+    </div>
+    <div style="padding-top: clamp(1px,15vw,15px);">
+        <button class="nav_button"><a href="../index.html" target="_blank">Return to Homepage / <span style="font-family: 'Hakgyoansim Byeolbichhaneul OTF', sans-serif;">홈페이지로 돌아가기</span></a></button>
+    </div>
+</div>
+<div class="main">
+    <style>
+        .container {
+            display: grid; /* Enables CSS Grid layout */
+            /* Creates two columns, each taking up 1 fractional unit (1fr), resulting in a 50%/50% split. */
+            grid-template-columns: 1fr 1fr;
+            width: 100%;
+            background-color: inherit;
+        }
+
+        .left-side, .right-side {
+            background-color: inherit;
+            flex-grow: 1; /* Tells both elements to grow and take up an equal fraction of the space */
+            /* You can remove any fixed 'width: 50%;' if you had one, as 'flex-grow: 1' handles it */
+        }
+    </style>
+    <div class="container">
+        <div class="left-side" style="background-color: inherit"><iframe width=100% height=500px src="https://www.youtube.com/embed/iKdr44yEBQU?si=5dAQeNu_ehDiWoAY" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="background-color: inherit; border: inherit"></iframe><br>
+        </div>
+        <div class="right-side" style="background-color: inherit">
+            <details style="">
+                <summary style="list-style: none; padding: 10px;"><h1><span style="font-family: 'Hakgyoansim Byeolbichhaneul OTF', sans-serif;">가사</span>/Lyrics</h1>
+                    <h2 style="font-style: italic">(English Translations)</h2></summary>
+                <title>Hover Pinyin and English Lyrics</title>
+                <style>
+                    /*
+                     * CSS for the hover effect
+                     */
+
+                    /* Style for the container paragraph */
+                    p {
+                        line-height: 2.2; /* Increase line height for better spacing */
+                        font-size: 1.1em;
+                    }
+
+                    /* The main element holding the Chinese text */
+                    abbr {
+                        text-decoration: none; /* Remove default underline from <abbr> */
+                        cursor: help; /* Change cursor to hint interactivity */
+                        position: relative; /* Needed to position the tooltip (pinyin/english) */
+                        display: inline-block;
+                        border-bottom: 1px dotted #ccc; /* Subtle hint that the text is interactive */
+                    }
+
+                    /* The Translation Tooltip Container */
+                    abbr .translation {
+                        visibility: hidden;
+                        width: max-content;
+                        max-width: 90vw;
+                        background-color: #333; /* Darker background for contrast */
+                        color: #ccc; /* Light gray text */
+                        text-align: center;
+                        border-radius: 4px;
+                        padding: 8px 10px;
+                        position: absolute;
+                        z-index: 10;
+                        bottom: 135%; /* Position it above the Chinese text */
+                        left: 50%;
+                        transform: translateX(-50%); /* Center the tooltip horizontally */
+                        opacity: 0;
+                        transition: opacity 0.3s;
+                        white-space: normal; /* Allow the content inside to wrap */
+                        box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+                        font-size: 0.9em;
+                        font-family: Arial, sans-serif;
+                        line-height: 1.5;
+                    }
+
+                    /* Style for the Pinyin line */
+                    abbr .translation .pinyin {
+                        display: block; /* Force Pinyin onto its own line */
+                        color: #a0a0a0; /* Distinct gray color for Pinyin */
+                        font-weight: bold;
+                    }
+
+                    /* Style for the English line */
+                    abbr .translation .english {
+                        display: block; /* Force English onto its own line */
+                        margin-top: 3px;
+                        color: white; /* Make English stand out slightly */
+                        font-style: italic;
+                    }
+
+                    /* Arrow/Tail for the tooltip */
+                    abbr .translation::after {
+                        content: "";
+                        position: absolute;
+                        top: 100%;
+                        left: 50%;
+                        margin-left: -5px;
+                        border-width: 5px;
+                        border-style: solid;
+                        border-color: #333 transparent transparent transparent; /* Arrow color matching background */
+                    }
+
+                    /* Show the translation on hover */
+                    abbr:hover .translation {
+                        visibility: visible;
+                        opacity: 1;
+                    }
+                    .korean-font {
+                        font-family: 'Hakgyoansim Byeolbichhaneul OTF', sans-serif;
+                        font-size: 1.1em;
+                    }
+                </style>
+
+
+
+                <p style="padding: 10px;">
+                    <abbr><span>Just want ten minutes, <span class="korean-font">내 것이 되는 시간</span></span><span class="translation"><span class="romanized">nae geosi doeneun sigan</span><span class="english">Just want ten minutes, time for you to become mine</span></span></abbr><br>
+                    <abbr><span><span class="korean-font">순진한 내숭에 속아 우는 남자들</span></span><span class="translation"><span class="romanized">sunjinhan naesunge soga uneun namjadeul</span><span class="english">Men who cry, fooled by innocent pretense</span></span></abbr><br>
+                    <abbr><span>Baby, <span class="korean-font">다른 매력에 흔들리고 있잖아</span></span><span class="translation"><span class="romanized">dareun maeryeoge heundeulligo itjana</span><span class="english">Baby, you're shaking because of a different charm, aren't you?</span></span></abbr><br>
+                    <abbr><span><span class="korean-font">용길 내 봐, 다가와 날 가질 수도 있잖아</span></span><span class="translation"><span class="romanized">yonggil nae bwa, dagawa nal gajil sudo itjana</span><span class="english">Try to be brave, come closer, you could have me</span></span></abbr><br>
+                    <abbr><span><span class="korean-font">어느 늦은 밤 혼자 들어선 곳</span></span><span class="translation"><span class="romanized">eoneu neujeun bam honja deureoseon got</span><span class="english">A place I walked into alone late one night</span></span></abbr><br>
+                    <abbr><span><span class="korean-font">춤 추는 사람들 그 속에, 그녀와 너</span></span><span class="translation"><span class="romanized">chum chuneun saramdeul geu soge, geunyeowa neo</span><span class="english">People dancing, and in the middle of them, her and you</span></span></abbr><br>
+                    <abbr><span><span class="korean-font">왠지 끌리는, 널 갖고 싶어져</span></span><span class="translation"><span class="romanized">waenji kkeullineun, neol gatgo sipeojyeo</span><span class="english">Somehow I'm drawn to you, I want to have you</span></span></abbr><br>
+                    <abbr><span><span class="korean-font">그녀가 자릴 비운 그 십분 안에</span></span><span class="translation"><span class="romanized">geunyeoga jaril biun geu sipbun ane</span><span class="english">In those ten minutes that she's left her spot</span></span></abbr><br>
+                    <abbr><span><span class="korean-font">지루했던 순간이</span></span><span class="translation"><span class="romanized">jiruehaetdeon sungani</span><span class="english">The boring moment</span></span></abbr><br>
+                    <abbr><span><span class="korean-font">널 보는 순간 달라졌어</span> (I'm telling you)</span><span class="translation"><span class="romanized">neol boneun sungan dallajyeosseo</span><span class="english">The moment I saw you, it changed (I'm telling you)</span></span></abbr><br>
+                    <abbr><span><span class="korean-font">오래된 연인 그게 아니던</span></span><span class="translation"><span class="romanized">oraedoen yeonin geuge anideondeul</span><span class="english">Whether you're long-term lovers or not</span></span></abbr><br>
+                    <abbr><span><span class="korean-font">중요한 사실은 넌 내게 더 끌리는 것</span></span><span class="translation"><span class="romanized">jungyohan sasireun neon naege deo kkeullineun geot</span><span class="english">The important truth is that you are more drawn to me</span></span></abbr><br>
+                    <abbr><span>I say <span class="korean-font">너의 그녀는 지금 거울을 보며</span></span><span class="translation"><span class="romanized">neoui geunyeoneun jigeum geoureul bomyeo</span><span class="english">I say your girlfriend is currently looking in the mirror</span></span></abbr><br>
+                    <abbr><span><span class="korean-font">붉은색 립스틱 화장을 덧칠하고</span></span><span class="translation"><span class="romanized">bulgeunsaek lipseutik hwajangeul deot chil hago</span><span class="english">Applying red lipstick and reapplying makeup</span></span></abbr><br>
+                    <abbr><span>Baby, <span class="korean-font">높은 구두에 아파하고 있을걸</span></span><span class="translation"><span class="romanized">nopeun gudue apahago isseulgeol</span><span class="english">Baby, she's probably hurting in those high heels</span></span></abbr><br>
+                    <abbr><span><span class="korean-font">나는 달라, 그녀와 날 비교하지 말아줘</span></span><span class="translation"><span class="romanized">naneun dalla, geunyeowa nal bigyohaji marajwo</span><span class="english">I am different, please don't compare me to her</span></span></abbr><br>
+                    <abbr><span><span class="korean-font">짧은 순간이 아니라고 했잖아</span></span><span class="translation"><span class="romanized">jjalbeun sungani anirago haetjana</span><span class="english">I told you it's not just a short moment</span></span></abbr><br>
+                    <abbr><span><span class="korean-font">영화 속에 갇힌 우리가 되는 거야</span></span><span class="translation"><span class="romanized">yeonghwa soge gathin uriga doeneun geoya</span><span class="english">We are becoming trapped inside a movie</span></span></abbr><br>
+                    <abbr><span><span class="korean-font">영화 속, 십분 일년도 지나쳐</span></span><span class="translation"><span class="romanized">yeonghwa sok, sipbun ilnyeondo jinachyeo</span><span class="english">In the movie, ten minutes is longer than a year</span></span></abbr><br>
+                    <abbr><span><span class="korean-font">어때 겁먹지는 마, 너도 날 원해</span></span><span class="translation"><span class="romanized">eottae geommeokjineun ma, neodo nal wonhae</span><span class="english">How about it? Don't be scared, you want me too</span></span></abbr><br>
+                    <abbr><span><span class="korean-font">지루했던 순간이 널 보는 순간</span></span><span class="translation"><span class="romanized">jiruehaetdeon sungani neol boneun sungan</span><span class="english">The boring moment, the moment I saw you</span></span></abbr><br>
+                    <abbr><span><span class="korean-font">달라졌어</span> (I'm telling you)</span><span class="translation"><span class="romanized">dallajyeosseo</span><span class="english">changed (I'm telling you)</span></span></abbr><br>
+                    <abbr><span><span class="korean-font">오래된 연인 그게 아니던</span></span><span class="translation"><span class="romanized">oraedoen yeonin geuge anideondeul</span><span class="english">Whether you're long-term lovers or not</span></span></abbr><br>
+                    <abbr><span><span class="korean-font">중요한 사실은 넌 내게 더 끌리는 것</span></span><span class="translation"><span class="romanized">jungyohan sasireun neon naege deo kkeullineun geot</span><span class="english">The important truth is that you are more drawn to me</span></span></abbr><br>
+                    <abbr><span>Just want ten minutes, <span class="korean-font">내 것이 되는 시간</span></span><span class="translation"><span class="romanized">nae geosi doeneun sigan</span><span class="english">Just want ten minutes, time for you to become mine</span></span></abbr><br>
+                    <abbr><span><span class="korean-font">모든 게 끝난 후 그녀가 오고 있어</span></span><span class="translation"><span class="romanized">modeun ge kkeutnan hu geunyeoga ogo isseo</span><span class="english">After everything is over, she is coming back</span></span></abbr><br>
+                    <abbr><span>Baby, <span class="korean-font">붉은 립스틱 촌스럽기도 하지</span></span><span class="translation"><span class="romanized">bulgeun lipseutik chonseureopgido haji</span><span class="english">Baby, that red lipstick is kind of tacky, isn't it?</span></span></abbr><br>
+                    <abbr><span><span class="korean-font">내게 와 봐 이제 넌 날 안아봐도 괜찮아</span></span><span class="translation"><span class="romanized">naege wa bwa ije neon nal anabwado gwaenchana</span><span class="english">Come to me, now it's okay for you to hug me</span></span></abbr><br>
+                    <abbr><span>Don't tell a lie, just be yourself, <span class="korean-font">힘들게 둘러대지 마</span></span><span class="translation"><span class="romanized">himdeulge dulleodaeji ma</span><span class="english">Don't tell a lie, just be yourself, don't try to beat around the bush</span></span></abbr><br>
+                    <abbr><span><span class="korean-font">널 떠나달라 말을 해</span> (have it your way)</span><span class="translation"><span class="romanized">neol tteonadalla mareul hae</span><span class="english">Tell her to leave you (have it your way)</span></span></abbr><br>
+                    <abbr><span>Bling, bling, shine it's right to come, <span class="korean-font">사랑에 빠진 거라고</span></span><span class="translation"><span class="romanized">sarange ppajin georago</span><span class="english">Bling, bling, shine it's right to come, say that you have fallen in love</span></span></abbr><br>
+                    <abbr><span><span class="korean-font">거짓을 말할 거라면, 모두 없던 걸로 해</span></span><span class="translation"><span class="romanized">geo jiseul malhal georamyeon, modu eopdeon geollo hae</span><span class="english">If you are going to tell a lie, let's pretend none of this happened</span></span></abbr><br>
+                    <abbr><span>I say <span class="korean-font">너의 그녀는 지금 거울을 보며</span></span><span class="translation"><span class="romanized">neoui geunyeoneun jigeum geoureul bomyeo</span><span class="english">I say your girlfriend is currently looking in the mirror</span></span></abbr><br>
+                    <abbr><span><span class="korean-font">붉은색 립스틱 화장을 덧칠하고</span></span><span class="translation"><span class="romanized">bulgeunsaek lipseutik hwajangeul deot chil hago</span><span class="english">Applying red lipstick and reapplying makeup</span></span></abbr><br>
+                    <abbr><span>Baby, <span class="korean-font">높은 구두에 아파하고 있을걸</span></span><span class="translation"><span class="romanized">nopeun gudue apahago isseulgeol</span><span class="english">Baby, she's probably hurting in those high heels</span></span></abbr><br>
+                    <abbr><span><span class="korean-font">나는 달라, 그녀와 날 비교하지 말아줘</span></span><span class="translation"><span class="romanized">naneun dalla, geunyeowa nal bigyohaji marajwo</span><span class="english">I am different, please don't compare me to her</span></span></abbr><br>
+                    <abbr><span>Just want ten minutes, <span class="korean-font">내 것이 되는 시간</span></span><span class="translation"><span class="romanized">nae geosi doeneun sigan</span><span class="english">Just want ten minutes, time for you to become mine</span></span></abbr><br>
+                    <abbr><span><span class="korean-font">순진한 내숭에 속아 우는 남자들</span></span><span class="translation"><span class="romanized">sunjinhan naesunge soga uneun namjadeul</span><span class="english">Men who cry, fooled by innocent pretense</span></span></abbr><br>
+                    <abbr><span>Baby, <span class="korean-font">다른 매력에 흔들리고 있잖아</span></span><span class="translation"><span class="romanized">dareun maeryeoge heundeulligo itjana</span><span class="english">Baby, you're shaking because of a different charm, aren't you?</span></span></abbr><br>
+                    <abbr><span><span class="korean-font">용길 내 봐, 다가와 날 가질 수도 있잖아</span></span><span class="translation"><span class="romanized">yonggil nae bwa, dagawa nal gajil sudo itjana</span><span class="english">Try to be brave, come closer, you could have me</span></span></abbr><br>
+                    <abbr><span>Just want ten minutes</span><span class="translation"><span class="romanized">Just want ten minutes</span><span class="english">Just want ten minutes</span></span></abbr><br>
+                </p>
+            </details>
+            <details style="margin-top: 15px;">
+                <summary style="list-style: none;"><h1><span style="font-family: 'Hakgyoansim Byeolbichhaneul OTF', sans-serif;">유용한 어휘</span></h1>
+                    <h2 style="font-style: italic">yuyonghan eohwi / Useful Vocabulary</h2></summary>
+                <div style="background-color: inherit; font-family: 'Nanum Myeongjo', Garamond, serif; font-size: 1.5rem";>
+                    <style>
+                        /* Adding a class for cleaner HTML while maintaining the custom font specification */
+                        .korean-font {
+                            font-family: 'Hakgyoansim Byeolbichhaneul OTF', sans-serif;
+                        }
+                    </style>
+
+                    <span><span class="korean-font"><b>내 것</b></span> (nae geot / mine) : The phrase "my thing" or "mine."</span><br>
+                    <span><span class="korean-font"><b>시간</b></span> (sigan / time) : The noun "time."</span><br>
+                    <span><span class="korean-font"><b>순진한</b></span> (sunjinhan / innocent) : Adjective meaning "innocent" or "naive."</span><br>
+                    <span><span class="korean-font"><b>내숭</b></span> (naesung / pretense) : The noun "pretense," "affected shyness," or "coquetry."</span><br>
+                    <span><span class="korean-font"><b>속아</b></span> (soga / fooled) : The verb stem for being "fooled" or "deceived."</span><br>
+                    <span><span class="korean-font"><b>우는</b></span> (uneun / crying) : Present participle of the verb "ulda" (to cry).</span><br>
+                    <span><span class="korean-font"><b>남자들</b></span> (namjadeul / men) : The plural noun "men" or "guys."</span><br>
+                    <span><span class="korean-font"><b>다른</b></span> (dareun / different) : The adjective "different" or "another."</span><br>
+                    <span><span class="korean-font"><b>매력</b></span> (maeryeok / charm) : The noun "charm" or "attraction."</span><br>
+                    <span><span class="korean-font"><b>흔들리고</b></span> (heundeulligo / shaking) : Present progressive of the verb "heundeullida" (to shake/be swayed).</span><br>
+                    <span><span class="korean-font"><b>용길 내 봐</b></span> (yonggil nae bwa / try to be brave) : Phrase meaning "try to take courage" or "be brave."</span><br>
+                    <span><span class="korean-font"><b>다가와</b></span> (dagawa / come closer) : The verb "to approach" or "come closer."</span><br>
+                    <span><span class="korean-font"><b>가질 수도 있잖아</b></span> (gajil sudo itjana / you can have) : Phrase meaning "you could have" or "you might possess."</span><br>
+                    <span><span class="korean-font"><b>늦은 밤</b></span> (neujeun bam / late night) : The phrase "late night."</span><br>
+                    <span><span class="korean-font"><b>혼자</b></span> (honja / alone) : The adverb "alone."</span><br>
+                    <span><span class="korean-font"><b>들어선 곳</b></span> (deureoseon got / place walked into) : The place or spot where one entered.</span><br>
+                    <span><span class="korean-font"><b>춤 추는</b></span> (chum chuneun / dancing) : Present participle phrase for "dancing."</span><br>
+                    <span><span class="korean-font"><b>사람들</b></span> (saramdeul / people) : The plural noun "people."</span><br>
+                    <span><span class="korean-font"><b>그 속에</b></span> (geu soge / in the middle) : The phrase "inside that" or "in the middle of them."</span><br>
+                    <span><span class="korean-font"><b>왠지</b></span> (waenji / somehow) : The adverb "somehow" or "for some reason."</span><br>
+                    <span><span class="korean-font"><b>끌리는</b></span> (kkeullineun / drawn to) : The adjective meaning "drawn to" or "attracted to."</span><br>
+                    <span><span class="korean-font"><b>갖고 싶어져</b></span> (gatgo sipeojyeo / want to have) : The phrase meaning "I start wanting to have (possess)."</span><br>
+                    <span><span class="korean-font"><b>자릴 비운</b></span> (jaril biun / left spot) : Phrase meaning "vacated one's seat/spot."</span><br>
+                    <span><span class="korean-font"><b>십분</b></span> (sipbun / ten minutes) : The noun "ten minutes."</span><br>
+                    <span><span class="korean-font"><b>지루했던</b></span> (jiruehaetdeon / boring) : Adjective describing something that "was boring."</span><br>
+                    <span><span class="korean-font"><b>순간이</b></span> (sungani / moment) : The noun "moment" or "instant."</span><br>
+                    <span><span class="korean-font"><b>달라졌어</b></span> (dallajyeosseo / changed) : Past tense meaning "it changed" or "it became different."</span><br>
+                    <span><span class="korean-font"><b>오래된 연인</b></span> (oraedoen yeonin / long-term lovers) : The phrase "long-time lovers/couple."</span><br>
+                    <span><span class="korean-font"><b>중요한 사실</b></span> (jungyohan sasil / important fact) : The phrase "important fact" or "important truth."</span><br>
+                    <span><span class="korean-font"><b>끌리는 것</b></span> (kkeullineun geot / the thing that draws) : Noun phrase meaning "the fact that (you) are drawn."</span><br>
+                    <span><span class="korean-font"><b>거울</b></span> (geoul / mirror) : The noun "mirror."</span><br>
+                    <span><span class="korean-font"><b>붉은색</b></span> (bulgeunsaek / red color) : The noun "red color."</span><br>
+                    <span><span class="korean-font"><b>립스틱</b></span> (lipseutik / lipstick) : The loanword "lipstick."</span><br>
+                    <span><span class="korean-font"><b>화장</b></span> (hwajang / makeup) : The noun "makeup."</span><br>
+                    <span><span class="korean-font"><b>덧칠</b></span></span>
+                </div>
+
+            </details>
+        </div>
+    </div>
+</div>
+</div>
+<div class="menu"style="width: 50px;height: 50px;">
+    <input id="toggle" type="checkbox" hidden="hidden">
+    <label for="toggle" class="hamburger">
+        <div class="top"></div>
+        <div class="mid"></div>
+        <div class="bot"></div>
+    </label>
+
+    <div class="nav">
+        <div class="nav-wrapper">
+            <nav>
+                <a href="../index.html" style="font-size: inherit">HOME</a><br>
+                <a href="../about.html" style="font-size: inherit">DEVELOPMENT</a><br>
+                <a href="french.html" style="font-size: inherit">FRENCH</a><br>
+                <a href="telugu.html" style="font-size: inherit">TELUGU</a><br>
+                <a href="korean.html"style="font-size: inherit">KOREAN</a><br>
+                <a href="mandarin.html" style="font-size: inherit">MANDARIN CHINESE</a><br>
+                <a href="spanish.html" style="font-size: inherit">SPANISH</a><br>
+            </nav>
+        </div>
+    </div>
+</div>
+</body>
+</html>

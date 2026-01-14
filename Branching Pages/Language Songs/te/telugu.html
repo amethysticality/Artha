@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/webstorm-icon-logo.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WS playground</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .container {
+            display: grid;
+            grid-template-areas:
+    "header menu"
+    "content menu"
+    "main menu"
+    "footer footer";
+            gap: 0px;
+            background-color: gray;
+            padding: 5px;
+        }
+        .container div {
+            background-color: white;
+            padding: 10px;
+        }
+        .container div.header {
+            grid-area: header;
+            text-align: center;
+            padding: clamp(50px, 20vw, 200px);
+            background-color: #353535;
+        }
+        .container div.menu {
+            grid-area: menu;
+        }
+        .container div.content {
+            grid-area: content;
+        }
+        .container div.footer {
+            grid-area: footer;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div class="header"style="height:clamp(20px, 20vw, 100px); border-top-left-radius: 10px;border-top-right-radius: 10px; color: #353535; background-color: #353535; opacity: 50%; visibility: visible;"></div>
+<div class="content"style="padding-left: 20px; height:clamp(300px,35vw,400px); padding-top: 30px; align-items: center;background-image: url('https://uploads.onecompiler.io/442ba68yj/442ba6d66/b52a9c90-bc57-4e57-a270-7cd4ede9f98e.jpg');">
+    <span class="cycling-textTl" style="line-height: max(clamp(140px,30vw,220px)); height: 200px; margin-top: 20px;"></span><br>
+    <div style="display: inline-flex;font-size: clamp(10px, 2.5vw, 70px);line-height: max(10px);">
+        <p class="cycling-textTl2" style="display: inline; margin: 0px;"></p>
+    </div>
+    <div style="padding-top: clamp(1px,15vw,15px);">
+        <button class="nav_button"><a href="../index.html" target="_blank">Return to Homepage / <span style="font-family: 'Vani', serif;">హోమ్‌పేజీకి తిరిగి వెళ్ళు</span></a></button>
+    </div>
+</div>
+<div class="main">
+    <style>
+        .container {
+            display: grid; /* Enables CSS Grid layout */
+            /* Creates two columns, each taking up 1 fractional unit (1fr), resulting in a 50%/50% split. */
+            grid-template-columns: 1fr 1fr;
+            width: 100%;
+            background-color: inherit;
+        }
+
+        .left-side, .right-side {
+            background-color: inherit;
+            flex-grow: 1; /* Tells both elements to grow and take up an equal fraction of the space */
+            /* You can remove any fixed 'width: 50%;' if you had one, as 'flex-grow: 1' handles it */
+        }
+    </style>
+    <div class="container">
+        <div class="left-side" style="background-color: inherit"><iframe width=100% height=500px src="https://www.youtube.com/embed/xQauklmE3Y8?si=yhFXtXQ_oNFgaiMh" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="background-color: inherit; border: inherit"></iframe><br>
+        </div>
+        <div class="right-side" style="background-color: inherit">
+            <details style="">
+                <summary style="list-style: none; padding: 10px;"><h1><span style="font-family: 'Vani', serif;">సాహిత్యం</span>/Lyrics</h1>
+                    <h2 style="font-style: italic">(English Translations)</h2></summary>
+                <title>Hover Pinyin and English Lyrics</title>
+                <style>
+                    /*
+                     * CSS for the hover effect
+                     */
+
+                    /* Style for the container paragraph */
+                    p {
+                        line-height: 2.2; /* Increase line height for better spacing */
+                        font-size: 1.1em;
+                    }
+
+                    /* The main element holding the Chinese text */
+                    abbr {
+                        text-decoration: none; /* Remove default underline from <abbr> */
+                        cursor: help; /* Change cursor to hint interactivity */
+                        position: relative; /* Needed to position the tooltip (pinyin/english) */
+                        display: inline-block;
+                        border-bottom: 1px dotted #ccc; /* Subtle hint that the text is interactive */
+                    }
+
+                    /* The Translation Tooltip Container */
+                    abbr .translation {
+                        visibility: hidden;
+                        width: max-content;
+                        max-width: 90vw;
+                        background-color: #333; /* Darker background for contrast */
+                        color: #ccc; /* Light gray text */
+                        text-align: center;
+                        border-radius: 4px;
+                        padding: 8px 10px;
+                        position: absolute;
+                        z-index: 10;
+                        bottom: 135%; /* Position it above the Chinese text */
+                        left: 50%;
+                        transform: translateX(-50%); /* Center the tooltip horizontally */
+                        opacity: 0;
+                        transition: opacity 0.3s;
+                        white-space: normal; /* Allow the content inside to wrap */
+                        box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+                        font-size: 0.9em;
+                        font-family: Arial, sans-serif;
+                        line-height: 1.5;
+                    }
+
+                    /* Style for the Pinyin line */
+                    abbr .translation .pinyin {
+                        display: block; /* Force Pinyin onto its own line */
+                        color: #a0a0a0; /* Distinct gray color for Pinyin */
+                        font-weight: bold;
+                    }
+
+                    /* Style for the English line */
+                    abbr .translation .english {
+                        display: block; /* Force English onto its own line */
+                        margin-top: 3px;
+                        color: white; /* Make English stand out slightly */
+                        font-style: italic;
+                    }
+
+                    /* Arrow/Tail for the tooltip */
+                    abbr .translation::after {
+                        content: "";
+                        position: absolute;
+                        top: 100%;
+                        left: 50%;
+                        margin-left: -5px;
+                        border-width: 5px;
+                        border-style: solid;
+                        border-color: #333 transparent transparent transparent; /* Arrow color matching background */
+                    }
+
+                    /* Show the translation on hover */
+                    abbr:hover .translation {
+                        visibility: visible;
+                        opacity: 1;
+                    }
+                    .telugu-text {
+                        font-family: 'Vani', serif;
+                        font-size: 1.1em;
+                    }
+                </style>
+
+
+
+                <p style="padding: 10px;">
+                    <abbr><span><span class="telugu-font">హే పట్టుచీరనే గట్టుకున్నా</span></span><span class="translation"><span class="romanized">He pattucheerane gattukunna</span><span class="english">Hey, I wore a silk saree</span></span></abbr><br>
+                    <abbr><span><span class="telugu-font">గట్టుకున్నుల్లో గట్టుకున్నా</span></span><span class="translation"><span class="romanized">Gattukunnullo gattukunna</span><span class="english">I wore it, I wore it (in a casual way)</span></span></abbr><br>
+                    <abbr><span><span class="telugu-font">టిక్కీబొట్టే వెట్టుకున్నా</span></span><span class="translation"><span class="romanized">Tikkeebotte vettukunna</span><span class="english">I put on a sticker bindi</span></span></abbr><br>
+                    <abbr><span><span class="telugu-font">వెట్టుకున్నుల్లో వెట్టుకున్నా</span></span><span class="translation"><span class="romanized">Vettukunnullo vettukunna</span><span class="english">I put it on, I put it on</span></span></abbr><br>
+                    <br>
+                    <abbr><span><span class="telugu-font">నడుముకు వడ్డాణం జుట్టుకున్నా</span></span><span class="translation"><span class="romanized">Nadumuku vaDDaaNam juTTukunna</span><span class="english">I fastened a waist belt (vaDDaaNam) to my waist</span></span></abbr><br>
+                    <abbr><span><span class="telugu-font">జుట్టుకున్నుల్లో జుట్టుకున్నా</span></span><span class="translation"><span class="romanized">JuTTukunnullo juTTukunna</span><span class="english">I fastened it, I fastened it</span></span></abbr><br>
+                    <abbr><span><span class="telugu-font">దిష్టి సుక్కనే దిద్దుకున్నా</span></span><span class="translation"><span class="romanized">DishTi sukkane diddukunna</span><span class="english">I applied a black dot (for protection from the evil eye)</span></span></abbr><br>
+                    <abbr><span><span class="telugu-font">దిద్దుకున్నుల్లో దిద్దుకున్నా</span></span><span class="translation"><span class="romanized">Diddukunnu llo diddukunna</span><span class="english">I applied it, I applied it</span></span></abbr><br>
+                    <br>
+                    <abbr><span><span class="telugu-font">పెళ్ళికూతురు ముస్తాబురో</span></span><span class="translation"><span class="romanized">Pellikoothuru musthaaburo</span><span class="english">This is a bride's makeover/preparation</span></span></abbr><br>
+                    <abbr><span><span class="telugu-font">నువ్వు ఏడంగ వస్తావురో</span></span><span class="translation"><span class="romanized">Nuvvu eDanga vasthaavuro</span><span class="english">Where will you come from?</span></span></abbr><br>
+                    <abbr><span><span class="telugu-font">చెయ్యి నీ చేతికిస్తానురో</span></span><span class="translation"><span class="romanized">Cheyyi nee chethikisthaanuro</span><span class="english">I will give my hand into your hand</span></span></abbr><br>
+                    <abbr><span><span class="telugu-font">అడుగు నీ అడుగులేస్తానురో</span></span><span class="translation"><span class="romanized">ADugu nee aDugulesthaanuro</span><span class="english">I will follow in your footsteps</span></span></abbr><br>
+                    <abbr><span><span class="telugu-font">నేను మెచ్చి నన్నే మెచ్చేటోడా</span></span><span class="translation"><span class="romanized">Nenu mecchi nanne mecchetoDaa</span><span class="english">You who like me, and whom I like</span></span></abbr><br>
+                    <abbr><span><span class="telugu-font">ఇట్టే వస్తా, రానీ వెంటా</span></span><span class="translation"><span class="romanized">iTTe vasthaa, raanee venTaa</span><span class="english">I will come just like this, come along</span></span></abbr><br>
+                    <br>
+                    <abbr><span><span class="telugu-font">నీ బుల్లెట్టు బండెక్కి వచ్చేత్త పా</span></span><span class="translation"><span class="romanized">Nee bulleTTu baNDekki occhetta paa</span><span class="english">I'll come riding on your Bullet bike, come on!</span></span></abbr><br>
+                    <abbr><span><span class="telugu-font">డుగ్గు డుగ్గు డుగ్గు డుగ్గు డుగ్గనీ</span></span><span class="translation"><span class="romanized">Duggu Duggu Duggu Duggu Dugganee</span><span class="english">The sound of the bike (Duggu Duggu)</span></span></abbr><br>
+                    <abbr><span><span class="telugu-font">అందాల దునియానే సూపిత్త పా</span></span><span class="translation"><span class="romanized">Andaala duniyaane soopitta paa</span><span class="english">I'll show you the world of beauty, come on!</span></span></abbr><br>
+                    <abbr><span><span class="telugu-font">చిక్కు చిక్కు చిక్కు చిక్కుబుక్కనీ</span></span><span class="translation"><span class="romanized">Cikku Cikku Cikku Cikkubukkani</span><span class="english">The sound of a fast moving bike/train (Cikku Cikku)</span></span></abbr><br>
+                    <br>
+                    <abbr><span><span class="telugu-font">చెరువు కట్టపొంటి చేమంతి వనం</span></span><span class="translation"><span class="romanized">Cheruvu kaTTaponTi chemanthi vanam</span><span class="english">Marigold garden beside the lake embankment</span></span></abbr><br>
+                    <abbr><span><span class="telugu-font">బంతివనం చేమంతివనం</span></span><span class="translation"><span class="romanized">Banthivanam chemanthivanam</span><span class="english">Marigold garden, chrysanthemum garden</span></span></abbr><br>
+                    <abbr><span><span class="telugu-font">చేమంతులు దెంపి దండ అల్లుకున్నా</span></span><span class="translation"><span class="romanized">Chemanthulu dempi daNDa allukunna</span><span class="english">I plucked chrysanthemums and wove them into a garland</span></span></abbr><br>
+                    <abbr><span><span class="telugu-font">అల్లుకున్నుల్లో అల్లుకున్నా</span></span><span class="translation"><span class="romanized">Allukunnullo allukunna</span><span class="english">I wove it, I wove it</span></span></abbr><br>
+                    <br>
+                    <abbr><span><span class="telugu-font">మా ఊరు వాగంచున మల్లె వనం</span></span><span class="translation"><span class="romanized">Maa ooru vaaganchuna malle vanam</span><span class="english">Jasmine garden by the stream of our village</span></span></abbr><br>
+                    <abbr><span><span class="telugu-font">మల్లె వనములో మల్లెవానమ్మ</span></span><span class="translation"><span class="romanized">Malle vanamulo mallevaanamma</span><span class="english">Jasmine rain in the jasmine garden, my dear</span></span></abbr><br>
+                    <abbr><span><span class="telugu-font">మల్లెలు దెంపి ఒళ్ళో నింపుకున్నా</span></span><span class="translation"><span class="romanized">Mallel u dempi oLLo nimpukunna</span><span class="english">I plucked jasmine flowers and filled my lap with them</span></span></abbr><br>
+                    <abbr><span><span class="telugu-font">నింపుకున్నుల్లో నింపుకున్నా</span></span><span class="translation"><span class="romanized">Nimpukunnullo nimpukunna</span><span class="english">I filled it, I filled it</span></span></abbr><br>
+                    <br>
+                    <abbr><span><span class="telugu-font">నువ్వు నన్నేలుకున్నావురో</span></span><span class="translation"><span class="romanized">Nuvvu nanneelukunnaavuro</span><span class="english">You have taken me as yours</span></span></abbr><br>
+                    <abbr><span><span class="telugu-font">దండ మెళ్ళోన ఏస్తానురో</span></span><span class="translation"><span class="romanized">DaNDa meLLona vesthaanuro</span><span class="english">I will put the garland around your neck</span></span></abbr><br>
+                    <abbr><span><span class="telugu-font">నేను నీ ఏలువట్టుకోని</span></span><span class="translation"><span class="romanized">Nenu nee yelavaTTukoni</span><span class="english">I will hold your hand</span></span></abbr><br>
+                    <abbr><span><span class="telugu-font">మల్లె జల్లోన ఎడతానురో</span></span><span class="translation"><span class="romanized">Malle jallona yeDataanuro</span><span class="english">I will leave them in the shower of jasmine</span></span></abbr><br>
+                    <abbr><span><span class="telugu-font">మంచి మర్యాదలు తెలిసినదాన్ని</span></span><span class="translation"><span class="romanized">Manchi maryaadalu telisinadaanni</span><span class="english">I am someone who knows good manners and respect</span></span></abbr><br>
+                    <abbr><span><span class="telugu-font">మట్టి మనుషుల్లోనా వెరిగినదాన్ని</span></span><span class="translation"><span class="romanized">MaTTi manushullona veriginadaanni</span><span class="english">I am someone who grew up among simple/soil people</span></span></abbr><br>
+                    <br>
+                    <abbr><span><span class="telugu-font">నీ బుల్లెట్టు బండెక్కి వచ్చేత్త పా</span></span><span class="translation"><span class="romanized">Nee bulleTTu baNDekki occhetta paa</span><span class="english">I'll come riding on your Bullet bike, come on!</span></span></abbr><br>
+                    <abbr><span><span class="telugu-font">డుగ్గు డుగ్గు డుగ్గు డుగ్గు డుగ్గనీ</span></span><span class="translation"><span class="romanized">Duggu Duggu Duggu Duggu Dugganee</span><span class="english">The sound of the bike (Duggu Duggu)</span></span></abbr><br>
+                    <abbr><span><span class="telugu-font">అందాల దునియానే సూపిత్త పా</span></span><span class="translation"><span class="romanized">Andaala duniyaane soopitta paa</span><span class="english">I'll show you the world of beauty, come on!</span></span></abbr><br>
+                    <abbr><span><span class="telugu-font">చిక్కు చిక్కు చిక్కు చిక్కుబుక్కనీ</span></span><span class="translation"><span class="romanized">Cikku Cikku Cikku Cikkubukkani</span><span class="english">The sound of a fast moving bike/train (Cikku Cikku)</span></span></abbr><br>
+                    <br>
+                    <abbr><span><span class="telugu-font">నే అవ్వసాటు ఆడపిల్లనయ్యో</span></span><span class="translation"><span class="romanized">Nee avvasaaTu aaDapillanayyo</span><span class="english">I am a girl under my mother's (grandmother's) care</span></span></abbr><br>
+                    <abbr><span><span class="telugu-font">పిల్లనయ్యో, ఆడపిల్లనయ్యో</span></span><span class="translation"><span class="romanized">Pillanayyo, aaDapillanayyo</span><span class="english">A child, a girl (used for emphasis)</span></span></abbr><br>
+                    <abbr><span><span class="telugu-font">మా నాన్న గుండెల్లోనా ప్రేమనయ్యో</span></span><span class="translation"><span class="romanized">Maa naanna guNDellona premanayyo</span><span class="english">I am the love in my father's heart</span></span></abbr><br>
+                    <abbr><span><span class="telugu-font">ప్రేమనయ్యో, నేను ప్రేమనయ్యో</span></span><span class="translation"><span class="romanized">Premanayyo, nenu premanayyo</span><span class="english">Love, I am love (used for emphasis)</span></span></abbr><br>
+                    <br>
+                    <abbr><span><span class="telugu-font">ఏడు గడపలల్లో ఒక్కదాన్నిరయ్యో</span></span><span class="translation"><span class="romanized">Yedu gaDapalallo okkadaannirayyo</span><span class="english">I am the only one among seven thresholds/doors (meaning I am the central figure of the family)</span></span></abbr><br>
+                    <abbr><span><span class="telugu-font">దాన్నిరయ్యో, ఒక్కదాన్నిరయ్యో</span></span><span class="translation"><span class="romanized">Daannirayyo, okkadaannirayyo</span><span class="english">The one, the only one (used for emphasis)</span></span></abbr><br>
+                    <abbr><span><span class="telugu-font">మా అన్నదమ్ములకు ప్రాణమయ్యో</span></span><span class="translation"><span class="romanized">Maa annadammulaku praaNamayyo</span><span class="english">I am the life/soul of my brothers</span></span></abbr><br>
+                    <abbr><span><span class="telugu-font">ప్రాణమయ్యో, నేను ప్రాణమయ్యో</span></span><span class="translation"><span class="romanized">PraaNamayyo, nenu praaNamayyo</span><span class="english">Life, I am life (used for emphasis)</span></span></abbr><br>
+                    <br>
+                    <abbr><span><span class="telugu-font">పండు ఎన్నల్లో ఎత్తుకొని</span></span><span class="translation"><span class="romanized">PaNDu ennal lo ettukoni</span><span class="english">Carrying me in the sunny mornings</span></span></abbr><br>
+                    <abbr><span><span class="telugu-font">ఎన్న ముద్దలు వెట్టుకొని</span></span><span class="translation"><span class="romanized">Enna muddalu veTTukoni</span><span class="english">Putting my own spit/kisses on me (a gesture of affection/warding off evil eye)</span></span></abbr><br>
+                    <abbr><span><span class="telugu-font">ఎన్ని మారాలు జేస్తు ఉన్నా</span></span><span class="translation"><span class="romanized">Enni maaraalu jesthu unnaa</span><span class="english">No matter how many naughty things I did</span></span></abbr><br>
+                    <abbr><span><span class="telugu-font">నన్ను గారాలు జేసుకొని</span></span><span class="translation"><span class="romanized">Nannu gaaraalu jesukoni</span><span class="english">Taking care of me lovingly</span></span></abbr><br>
+                    <abbr><span><span class="telugu-font">చేతుల్లో పెంచారు పువ్వల్లే నన్ను</span></span><span class="translation"><span class="romanized">Chethullo penchaaru puvvall e nannu</span><span class="english">They raised me in their hands like a flower</span></span></abbr><br>
+                    <abbr><span><span class="telugu-font">నీ చేతికిస్తారా నన్నేరా నేను</span></span><span class="translation"><span class="romanized">Nee chethikisthaaraa nanneraa nenu</span><span class="english">They will give me into your hands, it's me!</span></span></abbr><br>
+                    <br>
+                    <abbr><span><span class="telugu-font">నీ బుల్లెట్టు బండెక్కి వచ్చేత్త పా</span></span><span class="translation"><span class="romanized">Nee bulleTTu baNDekki occhetta paa</span><span class="english">I'll come riding on your Bullet bike, come on!</span></span></abbr><br>
+                    <abbr><span><span class="telugu-font">డుగ్గు డుగ్గు డుగ్గు డుగ్గు డుగ్గనీ</span></span><span class="translation"><span class="romanized">Duggu Duggu Duggu Duggu Dugganee</span><span class="english">The sound of the bike (Duggu Duggu)</span></span></abbr><br>
+                    <abbr><span><span class="telugu-font">అందాల దునియానే సూపిత్త పా</span></span><span class="translation"><span class="romanized">Andaala duniyaane soopitta paa</span><span class="english">I'll show you the world of beauty, come on!</span></span></abbr><br>
+                    <abbr><span><span class="telugu-font">చిక్కు చిక్కు చిక్కు చిక్కుబుక్కనీ</span></span><span class="translation"><span class="romanized">Cikku Cikku Cikku Cikkubukkani</span><span class="english">The sound of a fast moving bike/train (Cikku Cikku)</span></span></abbr><br>
+                    <br>
+                    <abbr><span><span class="telugu-font">నా కుడికాలు నీ ఇంట్లో వెట్టినంకా</span></span><span class="translation"><span class="romanized">Naa kuDi kaalu nee inTlo veTTinankaa</span><span class="english">After I set my right foot in your house (a sign of good luck)</span></span></abbr><br>
+                    <abbr><span><span class="telugu-font">వెట్టినంకుల్లో, వెట్టినంకా</span></span><span class="translation"><span class="romanized">VeTTinankullo, veTTinankaa</span><span class="english">After setting it, after setting it</span></span></abbr><br>
+                    <abbr><span><span class="telugu-font">సిరిసంపద సంబురం గల్గునింకా</span></span><span class="translation"><span class="romanized">Sirisampada samburam galguninkaa</span><span class="english">There will be happiness with wealth and prosperity</span></span></abbr><br>
+                    <abbr><span><span class="telugu-font">గల్గునింకుల్లో, గల్గునింకా</span></span><span class="translation"><span class="romanized">Galguninkullo, galguninkaa</span><span class="english">There will be, there will be</span></span></abbr><br>
+                    <br>
+                    <abbr><span><span class="telugu-font">నిన్ను గన్నోల్లే కన్నోల్లు అన్నుకుంటా</span></span><span class="translation"><span class="romanized">Ninnu gannolle kannolu annukunTaa</span><span class="english">I will consider the people who see you as my own people</span></span></abbr><br>
+                    <abbr><span><span class="telugu-font">అన్నుకుంటుల్లో, అన్నుకుంటా</span></span><span class="translation"><span class="romanized">AnnukunTullo, annukunTaa</span><span class="english">I will consider, I will consider</span></span></abbr><br>
+                    <abbr><span><span class="telugu-font">నీ కష్టాల్లో భాగాలు పంచుకుంటా</span></span><span class="translation"><span class="romanized">Nee kashTaallo bhaagaalu panchukunTaa</span><span class="english">I will share in your struggles and hardships</span></span></abbr><br>
+                    <abbr><span><span class="telugu-font">పంచుకుంటుల్లో, పంచుకుంటా</span></span><span class="translation"><span class="romanized">PanchukunTullo, panchukunTaa</span><span class="english">I will share, I will share</span></span></abbr><br>
+                    <br>
+                    <abbr><span><span class="telugu-font">సుక్క పొద్దుకే నిద్రలేసి</span></span><span class="translation"><span class="romanized">Sukka podduke nidralesi</span><span class="english">Waking up before the crack of dawn</span></span></abbr><br>
+                    <abbr><span><span class="telugu-font">సుక్కలా ముగ్గులాకిట్లేసి</span></span><span class="translation"><span class="romanized">Sukkalaa muggulaakiTlesi</span><span class="english">Putting star-like muggus (rangoli) at the doorstep</span></span></abbr><br>
+                    <abbr><span><span class="telugu-font">సుక్కలే నిన్ను నన్ను చూసి</span></span><span class="translation"><span class="romanized">Sukkale ninnu nannu choosi</span><span class="english">The stars seeing you and me</span></span></abbr><br>
+                    <abbr><span><span class="telugu-font">మురిసిపోయేలా నీతో కలిసి</span></span><span class="translation"><span class="romanized">Murisipoyelaa neetho kalisi</span><span class="english">Together with you, so that they become ecstatic</span></span></abbr><br>
+                    <abbr><span><span class="telugu-font">నా ఏడు జన్మాలు నీకిచ్చుకుంటా</span></span><span class="translation"><span class="romanized">Naa yedu janmaalu neekicchukunTaa</span><span class="english">I will give my seven lives to you</span></span></abbr><br>
+                    <abbr><span><span class="telugu-font">నీ తోడులో నన్ను నే మెచ్చుకుంటా</span></span><span class="translation"><span class="romanized">Nee thODulo nannu ne meccukunTaa</span><span class="english">I will cherish myself in your company</span></span></abbr><br>
+                    <br>
+                    <abbr><span><span class="telugu-font">నీ బుల్లెట్టు బండెక్కి వచ్చేత్త పా</span></span><span class="translation"><span class="romanized">Nee bulleTTu baNDekki occhetta paa</span><span class="english">I'll come riding on your Bullet bike, come on!</span></span></abbr><br>
+                    <abbr><span><span class="telugu-font">డుగ్గు డుగ్గు డుగ్గు డుగ్గు డుగ్గనీ</span></span><span class="translation"><span class="romanized">Duggu Duggu Duggu Duggu Dugganee</span><span class="english">The sound of the bike (Duggu Duggu)</span></span></abbr><br>
+                    <abbr><span><span class="telugu-font">అందాల దునియానే సూపిత్త పా</span></span><span class="translation"><span class="romanized">Andaala duniyaane soopitta paa</span><span class="english">I'll show you the world of beauty, come on!</span></span></abbr><br>
+                    <abbr><span><span class="telugu-font">చిక్కు చిక్కు చిక్కు చిక్కుబుక్కనీ</span></span><span class="translation"><span class="romanized">Cikku Cikku Cikku Cikkubukkani</span><span class="english">The sound of a fast moving bike/train (Cikku Cikku)</span></span></abbr>
+                                </p>
+            </details>
+            <details style="margin-top: 15px;">
+                <summary style="list-style: none;"><h1><span style="font-family: 'Vani', serif;">ఉపయోగకరమైన పదజాలం</span></h1>
+                    <h2 style="font-style: italic">Upayōgakaramaina Padajālaṁ / Useful Vocabulary</h2></summary>
+                <div style="background-color: inherit; font-family: 'Vani', Garamond, serif; font-size: 1.5rem";>
+                    <style>
+                        /* Adding a class for cleaner HTML while maintaining the custom font specification */
+                        .telugu-font {
+                            font-family: 'Vani', sans-serif;
+                        }
+                    </style>
+                    <span><span class="telugu-font"><b>పట్టుచీర</b></span> (paTTucheera) : **Silk saree.**</span><br>
+                    <span><span class="telugu-font"><b>గట్టుకున్నా</b></span> (gattukunnaa) : **I wore/fastened** (the saree).</span><br>
+                    <span><span class="telugu-font"><b>టిక్కీబొట్టు</b></span> (tikkeeboTTu) : **Sticker bindi.**</span><br>
+                    <span><span class="telugu-font"><b>వెట్టుకున్నా</b></span> (veTTukunnaa) : **I put on/applied.**</span><br>
+                    <span><span class="telugu-font"><b>నడుము</b></span> (naDumu) : **Waist.**</span><br>
+                    <span><span class="telugu-font"><b>వడ్డాణం</b></span> (vaDDaaNam) : **Waist belt** (an ornament).</span><br>
+                    <span><span class="telugu-font"><b>జుట్టుకున్నా</b></span> (juTTukunnaa) : **I fastened/tied** (around the waist).</span><br>
+                    <span><span class="telugu-font"><b>దిష్టి సుక్క</b></span> (dishTi sukka) : **Black dot** (applied to ward off the evil eye).</span><br>
+                    <span><span class="telugu-font"><b>దిద్దుకున్నా</b></span> (diddukunnaa) : **I applied/marked** (the dot).</span><br>
+                    <span><span class="telugu-font"><b>పెళ్ళికూతురు</b></span> (peLLikoothuru) : **Bride.**</span><br>
+                    <span><span class="telugu-font"><b>ముస్తాబు</b></span> (musthaabu) : **Makeover/Preparation/Adornment.**</span><br>
+                    <span><span class="telugu-font"><b>ఏడంగ</b></span> (eDanga) : **Where** (colloquial usage).</span><br>
+                    <span><span class="telugu-font"><b>వస్తావురో</b></span> (vasthaavuro) : **You will come.**</span><br>
+                    <span><span class="telugu-font"><b>అడుగులేస్తాను</b></span> (aDugulesthaanu) : **I will follow in your footsteps.**</span><br>
+                    <span><span class="telugu-font"><b>మెచ్చి</b></span> (mecchi) : **Liking/Approving.**</span><br>
+                    <span><span class="telugu-font"><b>బుల్లెట్టు బండి</b></span> (bulleTTu baNDi) : **Bullet bike** (motorcycle).</span><br>
+                    <span><span class="telugu-font"><b>వచ్చేత్త</b></span> (occhetta) : **I will come** (quickly/emphatically).</span><br>
+                    <span><span class="telugu-font"><b>అందాల దునియా</b></span> (andaala duniyaa) : **World of beauty.**</span><br>
+                    <span><span class="telugu-font"><b>సూపిత్త</b></span> (soopitta) : **I will show** (colloquial usage).</span><br>
+                    <span><span class="telugu-font"><b>చెరువు కట్ట</b></span> (cheruvu kaTTa) : **Lake embankment** (or pond bank).</span><br>
+                    <span><span class="telugu-font"><b>చేమంతి వనం</b></span> (chemanthi vanam) : **Chrysanthemum/Marigold garden.**</span><br>
+                    <span><span class="telugu-font"><b>దెంపి</b></span> (dempi) : **Pluck/Break** (a flower).</span><br>
+                    <span><span class="telugu-font"><b>దండ అల్లుకున్నా</b></span> (daNDa allukunnaa) : **I wove a garland.**</span><br>
+                    <span><span class="telugu-font"><b>వాగంచున</b></span> (vaaganchuna) : **By the stream/riverbank.**</span><br>
+                    <span><span class="telugu-font"><b>మల్లె వనం</b></span> (malle vanam) : **Jasmine garden.**</span><br>
+                    <span><span class="telugu-font"><b>ఒళ్ళో నింపుకున్నా</b></span> (oLLo nimpukunnaa) : **I filled my lap.**</span><br>
+                    <span><span class="telugu-font"><b>నన్నేలుకున్నావు</b></span> (nanneelukunnaavu) : **You took me as yours/You rule over me.**</span><br>
+                    <span><span class="telugu-font"><b>మర్యాదలు</b></span> (maryaadalu) : **Manners/Respect.**</span><br>
+                    <span><span class="telugu-font"><b>మట్టి మనుషులు</b></span> (maTTi manushulu) : **Simple/Common people** (lit. 'soil people').</span><br>
+                    <span><span class="telugu-font"><b>వెరిగినదాన్ని</b></span> (veriginadaanni) : **The one who grew up.**</span><br>
+                    <span><span class="telugu-font"><b>అవ్వసాటు</b></span> (avvasaaTu) : **Under grandmother's/mother's care.**</span><br>
+                    <span><span class="telugu-font"><b>ఆడపిల్ల</b></span> (aaDapilla) : **Girl/Daughter.**</span><br>
+                    <span><span class="telugu-font"><b>గుండెల్లోనా</b></span> (guNDellonaa) : **In the heart.**</span><br>
+                    <span><span class="telugu-font"><b>ఏడు గడపలు</b></span> (yedu gaDapalu) : **Seven thresholds** (figurative for a large, complete family).</span><br>
+                    <span><span class="telugu-font"><b>ప్రాణం</b></span> (praaNam) : **Life/Soul.**</span><br>
+                    <span><span class="telugu-font"><b>పండు ఎన్నలు</b></span> (paNDu ennalu) : **Sunny mornings/Warm sunshine.**</span><br>
+                    <span><span class="telugu-font"><b>ఎత్తుకొని</b></span> (ettukoni) : **Carrying/Lifting.**</span><br>
+                    <span><span class="telugu-font"><b>గారాలు జేసుకొని</b></span> (gaaraalu jesukoni) : **Cherishing/Pampering** (lovingly).</span><br>
+                    <span><span class="telugu-font"><b>పువ్వల్లే</b></span> (puvvalle) : **Like a flower.**</span><br>
+                    <span><span class="telugu-font"><b>కుడికాలు</b></span> (kuDi kaalu) : **Right foot** (associated with good fortune).</span><br>
+                    <span><span class="telugu-font"><b>సిరిసంపద</b></span> (sirisampada) : **Wealth and prosperity.**</span><br>
+                    <span><span class="telugu-font"><b>సంబురం</b></span> (samburam) : **Happiness/Celebration.**</span><br>
+                    <span><span class="telugu-font"><b>గల్గునింకా</b></span> (galguninkaa) : **There will be/It happens.**</span><br>
+                    <span><span class="telugu-font"><b>గన్నోల్లు</b></span> (gannollu) : **People who see** (colloquial).</span><br>
+                    <span><span class="telugu-font"><b>కన్నోల్లు</b></span> (kannollu) : **Own people/Relatives** (lit. 'those who gave birth').</span><br>
+                    <span><span class="telugu-font"><b>పంచుకుంటా</b></span> (panchukunTaa) : **I will share.**</span><br>
+                    <span><span class="telugu-font"><b>సుక్క పొద్దుకే</b></span> (sukka podduke) : **Before the crack of dawn.**</span><br>
+                    <span><span class="telugu-font"><b>నిద్రలేసి</b></span> (nidralesi) : **Waking up.**</span><br>
+                    <span><span class="telugu-font"><b>ముగ్గులాకిట్లేసి</b></span> (muggulaakiTlesi) : **Putting rangoli (muggulu) at the doorstep.**</span><br>
+                    <span><span class="telugu-font"><b>మురిసిపోయేలా</b></span> (murisi poyelaa) : **So as to become ecstatic.**</span><br>
+                    <span><span class="telugu-font"><b>ఏడు జన్మాలు</b></span> (yedu janmaalu) : **Seven lives** (a common Indian cultural concept).</span><br>
+                    <span><span class="telugu-font"><b>తోడులో</b></span> (thODulo) : **In company/Accompanying.**</span><br>
+                    <span><span class="telugu-font"><b>మెచ్చుకుంటా</b></span> (meccukunTaa) : **I will cherish/praise myself.**</span><br>
+                </div>
+
+            </details>
+        </div>
+    </div>
+</div>
+</div>
+<div class="menu"style="width: 50px;height: 50px;">
+    <input id="toggle" type="checkbox" hidden="hidden">
+    <label for="toggle" class="hamburger">
+        <div class="top"></div>
+        <div class="mid"></div>
+        <div class="bot"></div>
+    </label>
+
+    <div class="nav">
+        <div class="nav-wrapper">
+            <nav>
+                <a href="../index.html" style="font-size: inherit">HOME</a><br>
+                <a href="../about.html" style="font-size: inherit">DEVELOPMENT</a><br>
+                <a href="french.html" style="font-size: inherit">FRENCH</a><br>
+                <a href="telugu.html"style="font-size: inherit">TELUGU</a><br>
+                <a href="korean.html" style="font-size: inherit">KOREAN</a><br>
+                <a href="mandarin.html" style="font-size: inherit">MANDARIN CHINESE</a><br>
+                <a href="spanish.html" style="font-size: inherit">SPANISH</a><br>
+            </nav>
+        </div>
+    </div>
+</div>
+</body>
+</html>

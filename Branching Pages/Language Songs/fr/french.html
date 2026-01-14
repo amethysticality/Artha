@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/webstorm-icon-logo.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WS playground</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .container {
+            display: grid;
+            grid-template-areas:
+    "header menu"
+    "content menu"
+    "main menu"
+    "footer footer";
+            gap: 0px;
+            background-color: gray;
+            padding: 5px;
+        }
+        .container div {
+            background-color: white;
+            padding: 10px;
+        }
+        .container div.header {
+            grid-area: header;
+            text-align: center;
+            padding: clamp(50px, 20vw, 200px);
+            background-color: #353535;
+        }
+        .container div.menu {
+            grid-area: menu;
+        }
+        .container div.content {
+            grid-area: content;
+        }
+        .container div.footer {
+            grid-area: footer;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div class="header"style="height:clamp(20px, 20vw, 100px); border-top-left-radius: 10px;border-top-right-radius: 10px; color: #353535; background-color: #353535; opacity: 50%; visibility: visible;"></div>
+<div class="content"style="padding-left: 20px; height:clamp(200px,35vw,400px); align-items: center;background-image: url('https://uploads.onecompiler.io/442ba68yj/442ba6d66/nkjiu.png');">
+    <span class="cycling-textFr" style="line-height: max(clamp(10px,10vw,100px))"></span><br>
+    <div style="display: inline-flex;font-size: clamp(10px, 2.5vw, 30px);line-height: max(10px);">
+        <p class="cycling-textFr2" style="display: inline; margin: 0px;"></p>
+    </div>
+    <div style="padding-top: clamp(1px,15vw,15px);">
+        <button class="nav_button"><a href="index.html" target="_blank">Return to Homepage / Retournez-vous</a></button>
+    </div>
+</div>
+<div class="main">
+    <style>
+        .container {
+            display: grid; /* Enables CSS Grid layout */
+            /* Creates two columns, each taking up 1 fractional unit (1fr), resulting in a 50%/50% split. */
+            grid-template-columns: 1fr 1fr;
+            width: 100%;
+            background-color: inherit;
+        }
+
+        .left-side, .right-side {
+            background-color: inherit;
+            flex-grow: 1; /* Tells both elements to grow and take up an equal fraction of the space */
+            /* You can remove any fixed 'width: 50%;' if you had one, as 'flex-grow: 1' handles it */
+        }
+    </style>
+    <div class="container">
+        <div class="left-side" style="background-color: inherit"><iframe width=100% height=500px src="https://www.youtube.com/embed/4Y1djb7v-jo?si=LlKJJIOKkhzQwkw7" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="background-color: inherit; border: inherit"></iframe><br>
+        </div>
+    <div class="right-side" style="background-color: inherit">
+        <details>
+        <summary style="list-style: none;"><h1>Paroles/Lyrics</h1>
+            <h2 style="font-style: italic">(English Translations)</h2></summary>
+        <style>
+            /*
+             * CSS for the hover effect
+             */
+
+            /* Style for the container paragraph */
+            p {
+                line-height: 1.8; /* Improve readability */
+                padding: 5px;
+            }
+
+            /* The main element holding the French text */
+            abbr {
+                text-decoration: none; /* Remove default underline from <abbr> */
+                cursor: help; /* Change cursor to hint interactivity */
+                position: relative; /* Needed to position the tooltip (translation) */
+                display: inline-block; /* Allows the span to wrap without breaking the line */
+                border-bottom: 1px dotted #ccc; /* Subtle hint that the text is interactive */
+            }
+
+            /* The English translation (tooltip) */
+            abbr .translation {
+                visibility: hidden; /* Hide the translation by default */
+                width: max-content;
+                max-width: 300px; /* Limit width */
+                background-color: #f2f2f2; /* Light gray background */
+                color: gray; /* Gray text color */
+                text-align: center;
+                border-radius: 4px;
+                padding: 5px 8px;
+                position: absolute; /* Absolute positioning relative to <abbr> */
+                z-index: 1; /* Make sure it's on top of other content */
+                bottom: 125%; /* Position it above the French text (adjust this number to change vertical spacing) */
+                left: 50%;
+                transform: translateX(-50%); /* Center the tooltip horizontally */
+                opacity: 0;
+                transition: opacity 0.3s; /* Smooth fade-in effect */
+                white-space: normal; /* Allow the translation to wrap */
+                box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+                font-size: 0.9em;
+            }
+
+            /* Arrow/Tail for the tooltip (optional, but nice) */
+            abbr .translation::after {
+                content: "";
+                position: absolute;
+                top: 100%; /* Position at the bottom of the tooltip */
+                left: 50%;
+                margin-left: -5px;
+                border-width: 5px;
+                border-style: solid;
+                border-color: #f2f2f2 transparent transparent transparent; /* Arrow color matching background */
+            }
+
+            /* Show the translation when hovering over the French text */
+            abbr:hover .translation {
+                visibility: visible;
+                opacity: 1;
+            }
+        </style>
+
+
+        <p>
+            <abbr><span class="french">Quand il disparaît</span><span class="translation">(When he disappears)</span></abbr><br>
+            <abbr><span class="french">Je m'imagine tout un fiasco</span><span class="translation">(I imagine a whole fiasco)</span></abbr><br>
+            <abbr><span class="french">Pourquoi il me tient tête</span><span class="translation">(Why he resists me)</span></abbr><br>
+            <abbr><span class="french">Baby j'vois quand ton cœur prend l'eau</span><span class="translation">(Baby I see when your heart is struggling)</span></abbr><br>
+            <abbr><span class="french">Na mata epa (non je n'en veux pas)</span><span class="translation">(I don't want it)</span></abbr><br>
+            <abbr><span class="french">Na Epa (j'en veux plus)</span><span class="translation">(I don't want any more)</span></abbr><br>
+            <abbr><span class="french">Oya boru kata (ces mensonges)</span><span class="translation">(These lies)</span></abbr><br>
+            <abbr><span class="french">Boru kata (ces mensonges)</span><span class="translation">(These lies)</span></abbr><br>
+            <br>
+            <abbr><span class="french">Il s'en veut p'tit à petit</span><span class="translation">(He regrets little by little)</span></abbr><br>
+            <abbr><span class="french">Il joue le blessé tant pis, il m'a tant menti-ti-ti</span><span class="translation">(He acts like the injured one, too bad, he lied to me so much)</span></abbr><br>
+            <abbr><span class="french">Le temps a coulé baby, cette nuit est fatidique</span><span class="translation">(Time has passed baby, this night is fateful)</span></abbr><br>
+            <abbr><span class="french">J'entends toujours la même chose ta même melody</span><span class="translation">(I always hear the same thing, your same melody)</span></abbr><br>
+            <abbr><span class="french">Melody-dy</span><span class="translation">(Melody-dy)</span></abbr><br>
+            <abbr><span class="french">À quoi tu joues</span><span class="translation">(What are you playing at)</span></abbr><br>
+            <abbr><span class="french">Ouh</span><span class="translation">(Ooh)</span></abbr><br>
+            <br>
+            <abbr><span class="french">Tous ces mots doux ça te rend fou</span><span class="translation">(All these sweet words drive you crazy)</span></abbr><br>
+            <abbr><span class="french">Ce monde devait être pour nous</span><span class="translation">(This world should have been for us)</span></abbr><br>
+            <abbr><span class="french">Mon cœur est blindé par tous ses mensonges</span><span class="translation">(My heart is shielded by all his lies)</span></abbr><br>
+            <abbr><span class="french">Pourquoi l'amour m'aveugle et me trompe</span><span class="translation">(Why does love blind and deceive me)</span></abbr><br>
+            <br>
+            <abbr><span class="french">Il s'en veut p'tit à petit</span><span class="translation">(He regrets little by little)</span></abbr><br>
+            <abbr><span class="french">Il joue le blessé, tant pis, il m'a tant menti-ti-ti</span><span class="translation">(He acts like the injured one, too bad, he lied to me so much)</span></abbr><br>
+            <abbr><span class="french">Le temps a coulé baby, cette nuit est fatidique</span><span class="translation">(Time has passed baby, this night is fateful)</span></abbr><br>
+            <abbr><span class="french">J'entends toujours la même chose ta même melody</span><span class="translation">(I always hear the same thing, your same melody)</span></abbr><br>
+            <abbr><span class="french">Melody-dy</span><span class="translation">(Melody-dy)</span></abbr><br>
+            <abbr><span class="french">À quoi tu joues</span><span class="translation">(What are you playing at)</span></abbr><br>
+            <abbr><span class="french">Tous ces mots doux, ça te rend fou</span><span class="translation">(All these sweet words drive you crazy)</span></abbr><br>
+            <abbr><span class="french">Ce monde devait être pour nous</span><span class="translation">(This world should have been for us)</span></abbr><br>
+            <abbr><span class="french">Si seulement</span><span class="translation">(If only)</span></abbr><br>
+            <abbr><span class="french">Ce monde était fait pour nous</span><span class="translation">(This world was made for us)</span></abbr><br>
+            <abbr><span class="french">Si seulement</span><span class="translation">(If only)</span></abbr><br>
+            <abbr><span class="french">Ce monde devait être à nous</span><span class="translation">(This world should be ours)</span></abbr>
+        </p>
+            </details>
+        <details style="margin-top: 15px;">
+            <summary style="list-style: none;"><h1>Vocabulaire Utile</h1>
+                <h2 style="font-style: italic">Useful Vocabulary</h2></summary>
+            <div style="background-color: inherit; font-family: 'Nanum Myeongjo', Garamond, serif; font-size: 1.5rem";>
+                <span><b>Disparaître</b> (to disappear) : Common verb meaning to cease to be visible or to vanish.</span><br>
+                <span><b>Fiasco</b> (fiasco) : Noun meaning a complete failure or disaster.</span><br>
+                <span><b>Tenir tête</b> (to hold one's head) : Expresses opposition or refusal to yield to someone's authority or arguments.</span><br>
+                <span><b>Prendre l'eau</b> (to take on water) : Figurative expression meaning to be in difficulty, to be suffering emotionally, or about to give up.</span><br>
+                <span><b>Mensonge</b> (lie) : Noun referring to an untruthful statement made with the intent to deceive.</span><br>
+                <span><b>S'en vouloir</b> (to blame oneself) : Pronominal verb meaning to feel regret or to blame oneself for a mistake or fault.</span><br>
+                <span><b>P'tit à petit</b> (little by little) : Compound adverb meaning gradually or slowly (contraction of *petit à petit*).</span><br>
+                <span><b>Tant pis</b> (too bad) : Expression used to express the acceptance of a troublesome fact or a certain fatalism.</span><br>
+                <span><b>Menti</b> (lied) : Past participle of the verb **mentir** (to lie).</span><br>
+                <span><b>Couler</b> (to flow/to pass) : Used here in the expression **Le temps a coulé**, meaning that time has passed or elapsed.</span><br>
+                <span><b>Fatidique</b> (fateful) : Adjective referring to something linked to destiny or having serious, unavoidable consequences.</span><br>
+                <span><b>Mots doux</b> (sweet words) : Compound noun referring to tender words, compliments, or flattery.</span><br>
+                <span><b>Blindé</b> (armored) : Adjective meaning protected or fortified. Used here figuratively to mean the heart is immune or insensitive to pain.</span><br>
+                <span><b>Aveugle</b> (blind) : Adjective or the verb <i>aveugler</i> (to blind). Used figuratively here: love prevents one from seeing the truth or reality.</span><br>
+                <span><b>Trompe</b> (deceives/cheats) : Conjugated form of the verb **tromper** (to deceive, to cheat). Means to mislead or to be unfaithful.</span><br>
+                <span><b>Si seulement</b> (if only) : Exclamatory expression that introduces a wish, a deep regret, or an unfulfilled condition.</span>
+            </div>
+
+        </details>
+    </div>
+        </div>
+    </div>
+</div>
+<div class="menu"style="width: 50px;height: 50px;">
+    <input id="toggle" type="checkbox" hidden="hidden">
+    <label for="toggle" class="hamburger">
+        <div class="top"></div>
+        <div class="mid"></div>
+        <div class="bot"></div>
+    </label>
+
+    <div class="nav">
+        <div class="nav-wrapper">
+            <nav>
+                <a href="index.html" style="font-size: inherit">HOME</a><br>
+                <a href="about.html"style="font-size: inherit">DEVELOPMENT</a><br>
+                <a href="Branching Pages\Language Songs\fr\french.html"style="font-size: inherit">FRENCH</a><br>
+                <a href="telugu.html"style="font-size: inherit">TELUGU</a><br>
+                <a href="korean.html"style="font-size: inherit">KOREAN</a><br>
+                <a href="mandarin.html"style="font-size: inherit">MANDARIN CHINESE</a><br>
+                <a href="spanish.html"style="font-size: inherit">SPANISH</a><br>
+            </nav>
+        </div>
+    </div>
+</div>
+</body>
+</html>
