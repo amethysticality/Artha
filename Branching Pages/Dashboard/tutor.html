@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/webstorm-icon-logo.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tutoring</title>
+    <link rel="stylesheet" href="../../../../style.css">
+    <style>
+        .container {
+            display: grid;
+            grid-template-areas:
+    "header menu"
+    "content menu"
+    "main menu"
+    "footer footer";
+            gap: 0px;
+            background-color: gray;
+            padding: 5px;
+        }
+        .container div {
+            background-color: white;
+            padding: 10px;
+        }
+        .container div.header {
+            grid-area: header;
+            text-align: center;
+            padding: clamp(50px, 20vw, 200px);
+            background-color: #353535;
+        }
+        .container div.menu {
+            grid-area: menu;
+        }
+        .container div.content {
+            grid-area: content;
+        }
+        .container div.footer {
+            grid-area: footer;
+            text-align: center;
+        }
+    </style>
+    <script src="../../main.js"></script>
+</head>
+<body>
+<div class="header"style="height:clamp(20px, 20vw, 100px); border-top-left-radius: 10px;border-top-right-radius: 10px; color: #353535; background-color: #353535; opacity: 50%; visibility: visible;"></div>
+<div class="content"style="padding-left: 20px; height:clamp(200px,35vw,400px); align-items: center;background-image: url('/ImagesAndVisualAssets/Images/Colorful_illuminated_facades_of_buildings_at_night,_with_green,_blue_and_pink_lights,_Kabukicho,_Shinjuku,_Tokyo.jpg'); background-size: cover;">
+    <div class="welcome-container">
+    <h1 id="welcome-message" style="font-size: clamp(50px, 1vw, 5px);">Welcome, Guest!</h1></div>
+    <h2>See your listening statistics here!</h2>
+    <div style="padding-top: clamp(1px,15vw,10px);">
+        <button class="nav_button"><a href="../../index.html" target="_blank">Return to Homepage</a></button>
+    </div>
+</div>
+<div class="main">
+    <style>
+        .container {
+            display: grid; /* Enables CSS Grid layout */
+            /* Creates two columns, each taking up 1 fractional unit (1fr), resulting in a 50%/50% split. */
+            grid-template-columns: 1fr 1fr;
+            width: 100%;
+            background-color: inherit;
+        }
+
+        .left-side, .right-side {
+            background-color: inherit;
+            flex-grow: 1; /* Tells both elements to grow and take up an equal fraction of the space */
+            /* You can remove any fixed 'width: 50%;' if you had one, as 'flex-grow: 1' handles it */
+        }
+    </style>
+    <div class="container">
+        <div class="left-side" style="background-color: inherit">
+            <style>
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; background: rgb(20, 20, 20); color: #ffffff; }
+        th, td { padding: 12px; border: 1px solid #ddd; text-align: left; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; }
+        th { background-color: #353535; color: white; }
+        .signup-btn { background-color: #04360f; color: white; border: none; padding: 8px 12px; cursor: pointer; border-radius: 4px; }
+        .signup-btn:hover { background-color: #218838; }
+    </style>
+            <h1>Available Tutoring Sessions</h1>
+            
+        <div id="add-session-form" style="background-color: #111111; padding: 20px; border-radius: 8px; margin-bottom: 20px; color: #ffffff;">
+    <h3>Add New Tutoring Session</h3>
+    <input type="text" id="tutorName" placeholder="Tutor Name" style="margin: 5px; padding: 5px;">
+    <input type="text" id="tutorLang" placeholder="Language" style="margin: 5px; padding: 5px;">
+    <input type="text" id="tutorDesc" placeholder="Description" style="margin: 5px; padding: 5px;">
+    <input type="text" id="tutorCost" placeholder="Cost (e.g. $20/hr)" style="margin: 5px; padding: 5px;">
+    <button onclick="addNewSession()" style="padding: 6px 12px; background-color: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer;">Add Session</button>
+</div>
+</details>
+<table>
+    <thead>
+        <tr>
+            <th>Tutor Name</th>
+            <th>Language</th>
+            <th>Description</th>
+            <th>Cost</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody id="session-table-body">
+        <tdr>
+        </tbody>
+</table>
+        </div>
+    <div class="right-side" style="background-color: inherit">
+<div id="my-sessions" style="background-color:rgb(30, 30, 30); padding: 15px; margin: 10px; border-radius: 10px; color: white;">
+    <h3>My Tutoring Sessions</h3>
+    <ul id="booked-sessions-list">
+        <li>No sessions booked yet.</li>
+    </ul>
+    <button class="nav_button"><a href="dashboard.html" target="_blank">My Dashboard ↗</a></button>
+</div>
+        </div>
+        </div>
+    </div>
+    
+</div>
+<div class="menu"style="width: 50px;height: 50px;">
+    <input id="toggle" type="checkbox" hidden="hidden">
+    <label for="toggle" class="hamburger">
+        <div class="top"></div>
+        <div class="mid"></div>
+        <div class="bot"></div>
+    </label>
+
+    <div class="nav">
+        <div class="nav-wrapper">
+            <nav>
+                <a href="/index.html" style="font-size: inherit">HOME</a><br>
+                <a href="/about.html"style="font-size: inherit">DEVELOPMENT</a><br>
+                <a href="/Branching Pages/Language Songs/gallery.html"style="font-size: inherit">GALLERY</a><br>
+                <a href="/Branching Pages/Language Songs/tutor.html"style="font-size: inherit">TUTORING</a><br>
+                <a href="/Branching Pages/Dashboard/dashboard.html"style="font-size: inherit">DASHBOARD</a><br>
+                <a href="/Branching Pages/Dashboard/login.html"style="font-size: inherit">LOG IN</a><br>
+                <a href="/Branching Pages/Dashboard/register.html"style="font-size: inherit">REGISTER</a><br>
+            </nav>
+        </div>
+    </div>
+</div>
+</body>
+</html>
