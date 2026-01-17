@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/webstorm-icon-logo.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gallery</title>
+  <link rel="stylesheet" href="../../style.css">
+    <style>
+        .container {
+            
+            gap: 0px;
+            background-color: gray;
+            padding: 5px;
+        }
+    </style>
+    <script src="../../main.js"></script>
+</head>
+<body>
+<div class="header"style="height:clamp(20px, 20vw, 100px); border-top-left-radius: 10px;border-top-right-radius: 10px; color: #353535; background-color: #353535; opacity: 50%; visibility: visible;"></div>
+<div class="content"style="padding-left: 20px; height:clamp(200px,35vw,400px); align-items: center;background-image: url('/ImagesAndVisualAssets/Images/640px-Celebración_de_Todos_los_Santos,_cementerio_de_la_Santa_Cruz,_Gniezno,_Polonia,_2017-11-01,_DD_19-30_PAN_HDR.jpg'); background-size: cover;">
+    <div class="welcome-container">
+    <h1 id="welcome-message" style="font-size: clamp(50px, 1vw, 5px);">Welcome, Guest!</h1></div>
+    <h2>Find a new song to listen to here!</h2>
+    <div style="padding-top: clamp(1px,15vw,10px);">
+        <button class="nav_button"><a href="../../index.html" target="_blank">Return to Homepage</a></button>
+    </div>
+</div>
+<div class="main">
+    <style>
+        .container {
+            display: grid; /* Enables CSS Grid layout */
+            /* Creates two columns, each taking up 1 fractional unit (1fr), resulting in a 50%/50% split. */
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            width: 100%;
+            background-color: inherit;
+            text-align: center;
+        }
+        
+        .left-side, .right-side {
+            background-color: inherit;
+            flex-grow: 1; /* Tells both elements to grow and take up an equal fraction of the space */
+            /* You can remove any fixed 'width: 50%;' if you had one, as 'flex-grow: 1' handles it */
+        }
+
+        .left-side a:hover{
+            color: olivedrab;
+            transition: filter 0.5s ease-in-out;
+        } 
+        .button {
+            font-family: 'Engravers MT', 'Garamond', serif;
+        }
+        .jamais {
+        }
+        .jamais:hover {
+            filter: blur(0px);
+            transition: filter 0.5s ease-in-out;
+        }
+        .jamais a:hover {
+            color: olivedrab;
+            transition: filter 0.5s ease-in-out;
+        }
+        </style>
+        <div class="container">
+    <div style="background-image: url('/ImagesAndVisualAssets/Images/Hubble_ultra_deep_field.jpg'); padding: 20px; margin: 10px; border-radius: 10px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; text-align: center;" class="left-side">
+        <h1 style="font-size: clamp(50px,2vw,70px);">French</h1>
+        <p style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; text-align: center;">The Language of Romance.</p>
+        <a href="fr/french.html" style="text-decoration: underline;"><i>Go to Learn With Nilusi ↗</i></a>
+
+    </div>
+    <div style="background-image: url('/ImagesAndVisualAssets/Images/A_Photo_of_complete_darkness.jpg'); padding: 20px; margin: 10px; border-radius: 10px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; text-align: center;" class="left-side">
+        <h1 style="font-size: clamp(50px,2vw,70px);">Telugu</h1>
+        <p style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; text-align: center;">The Italian of the East.</p>
+        <a href="te/telugu.html" style="text-decoration: underline;"><i>Go to Learn With Mohana Bhogaraju ↗</i></a>
+
+
+    </div>
+    <div class="jamais" style="background-image: url('/ImagesAndVisualAssets/Images/Light_house_at_St._Martin\'s_Island.jpg'); padding: 20px; margin: 10px; border-radius: 10px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; text-align: center;" class="right-side">
+        <div style=" color: white; padding: 0%; margin: 0%;">
+        <h1 style="font-size: clamp(50px,2vw,70px);">Mandarin</h1>
+        <p style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; text-align: center;">The Standard Version of Chinese across the Sinophonie</p>
+        <a href="cn_cmn/mandarin.html" style="text-decoration: underline;"><i>Go to Learn With Yu Yan ↗</i></a>
+
+    </div>
+    
+    
+    </div>
+    <div class="jamais" style="background-image: url('/ImagesAndVisualAssets/Images/A_Bukharan_dance_performed_by_members_of_the_Rina_Nikova_ballet_in_the_citadel_of_Jerusalem_-_Restoration.jpg'); padding: 20px; margin: 10px; border-radius: 10px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; text-align: center;" class="left-side">
+        <div style=" color: white; padding: 0%; margin: 0%;">
+        <h1 style="font-size: clamp(50px,2vw,70px);">Tutoring</h1>
+        <p style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; text-align: center;">Sometimes You Just Need a Tutor</p>
+        <a href="/Branching Pages/Dashboard/tutor.html" style="text-decoration: underline;"><i>Go to Learn With Our Tutors ↗</i></a>
+
+    </div>
+    
+ 
+</div>
+
+<div class="menu"style="width: 50px;height: 50px;">
+<input id="toggle" type="checkbox" hidden="hidden">
+<label for="toggle" class="hamburger">
+    <div class="top"></div>
+    <div class="mid"></div>
+    <div class="bot"></div>
+</label>
+
+<div class="nav">
+    <div class="nav-wrapper">
+        <nav>
+            <a href="/index.html" style="font-size: inherit">HOME</a><br>
+                <a href="/about.html"style="font-size: inherit">DEVELOPMENT</a><br>
+                <a href="/Branching Pages/Language Songs/gallery.html"style="font-size: inherit">GALLERY</a><br>
+                <a href="/Branching Pages/Language Songs/tutor.html"style="font-size: inherit">TUTORING</a><br>
+                <a href="/Branching Pages/Dashboard/dashboard.html"style="font-size: inherit">DASHBOARD</a><br>
+                <a href="/Branching Pages/Dashboard/login.html"style="font-size: inherit">LOG IN</a><br>
+                <a href="/Branching Pages/Dashboard/register.html"style="font-size: inherit">REGISTER</a><br>
+        </nav>
+    </div>
+</div>
+</div>
+</body>
+</html>

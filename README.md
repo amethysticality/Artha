@@ -1,1 +1,1 @@
-# Artha
+# amethysticality

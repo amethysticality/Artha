@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/webstorm-icon-logo.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WS playground</title>
+    <link rel="stylesheet" href="../../../../style.css">
+    <style>
+        .container {
+            display: grid;
+            grid-template-areas:
+    "header menu"
+    "content menu"
+    "main menu"
+    "footer footer";
+            gap: 0px;
+            background-color: gray;
+            padding: 5px;
+        }
+        .container div {
+            background-color: white;
+            padding: 10px;
+        }
+        .container div.header {
+            grid-area: header;
+            text-align: center;
+            padding: clamp(50px, 20vw, 200px);
+            background-color: #353535;
+        }
+        .container div.menu {
+            grid-area: menu;
+        }
+        .container div.content {
+            grid-area: content;
+        }
+        .container div.footer {
+            grid-area: footer;
+            text-align: center;
+        }
+    </style>
+    <script src="../../main.js"></script>
+</head>
+<body>
+    <script>
+        checkAuth();
+         if (!user) {
+        window.location.href = "login.html"; 
+    }
+    </script>
+<div class="header"style="height:clamp(20px, 20vw, 100px); border-top-left-radius: 10px;border-top-right-radius: 10px; color: #353535; background-color: #353535; opacity: 50%; visibility: visible;"></div>
+<div class="content"style="padding-left: 20px; height:clamp(200px,35vw,400px); align-items: center;background-image: url('/ImagesAndVisualAssets/Images/640px-Celebración_de_Todos_los_Santos,_cementerio_de_la_Santa_Cruz,_Gniezno,_Polonia,_2017-11-01,_DD_19-30_PAN_HDR.jpg'); background-size: cover;">
+    <div class="welcome-container">
+    <h1 id="welcome-message" style="font-size: clamp(50px, 1vw, 5px);">Welcome, Guest!</h1></div>
+    <h2>See your listening statistics here!</h2>
+    <div style="padding-top: clamp(1px,15vw,10px);">
+        <button class="nav_button"><a href="../../index.html" target="_blank">Return to Homepage</a></button>
+    </div>
+</div>
+<div class="main">
+    <style>
+        .container {
+            display: grid; /* Enables CSS Grid layout */
+            /* Creates two columns, each taking up 1 fractional unit (1fr), resulting in a 50%/50% split. */
+            grid-template-columns: 1fr 1fr 1fr;
+            width: 100%;
+            background-color: inherit;
+        }
+
+        .left-side, .middle-side, .right-side {
+            background-color: inherit;
+            flex-grow: 1; /* Tells both elements to grow and take up an equal fraction of the space */
+            /* You can remove any fixed 'width: 50%;' if you had one, as 'flex-grow: 1' handles it */
+        }
+    </style>
+    <div class="container">
+        <div class="left-side" style="background-color: inherit">
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<div id="statistics-section" style="background-color:rgb(20, 20, 20); padding: 20px; margin: 10px; border-radius: 10px; color: white; text-align: center;">
+    <h1>Time Spent by Category</h1>
+    <div style="width: 300px; margin: 0 auto; background-color: inherit; font-family: 'Courier New', Courier, monospace;">
+        <canvas id="myPieChart" style="background-color: inherit; font-family: 'Courier New', Courier, monospace;"></canvas>
+    </div>
+</div>
+        </div>
+        <div class="middle-side" style="background-color: inherit">
+            <div id="recent-activity-section" style="background-color:rgb(20, 20, 20); padding: 20px; margin: 10px; border-radius: 10px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; text-align: center; align-items: center;">
+    <h1>Your Recent Activity</h1><br>
+    <span id="total-views-display">0</span> <span style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">total listens</span><br><br>
+    <ol style="list-style-type: style circle;" id="recent-list">
+        </ol>
+</div>
+            </div>
+    <div class="right-side" style="background-color: inherit">
+<div id="account-tab" style="background-color:rgb(20, 20, 20);; padding: 20px; margin: 10px; border-radius: 10px; color: white; font-family:'Franklin Gothic Medium', 'Courier New', Courier, monospace, 'Arial Narrow', Arial, sans-serif">
+    <h2 style="border-bottom: 1px solid #050505; padding-bottom: 10px; font-family: 'Courier New', Courier, monospace;">Account Settings</h2>
+    
+    <div style="margin: 15px 0; background-color: inherit;">
+        <p><strong>Username:</strong> <span id="display-username">Loading...</span></p>
+        <p><strong>Password:</strong> <span id="display-password">Loading...</span></p>
+    </div>
+
+    <button type="button" onclick="logout()" style="background-color: #860707; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-family: 'Courier New', Courier, monospace;">
+        Log Out
+    </button>
+</div>
+<div id="my-sessions" style="background-color:rgb(30, 30, 30); padding: 15px; margin: 10px; border-radius: 10px; color: white;">
+    <h3>My Tutoring Sessions</h3>
+    <ul id="booked-sessions-list">
+        <li>No sessions booked yet.</li>
+    </ul>
+    <button type="button" onclick="location.href='tutor.html'" style="background-color: #002407; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-family: 'Courier New', Courier, monospace;">
+        Book or Host a Session
+    </button>
+</div>
+        </div>
+        </div>
+    </div>
+</div>
+<div class="menu"style="width: 50px;height: 50px;">
+    <input id="toggle" type="checkbox" hidden="hidden">
+    <label for="toggle" class="hamburger">
+        <div class="top"></div>
+        <div class="mid"></div>
+        <div class="bot"></div>
+    </label>
+
+    <div class="nav">
+        <div class="nav-wrapper">
+            <nav>
+                <a href="/index.html" style="font-size: inherit">HOME</a><br>
+                <a href="/about.html"style="font-size: inherit">DEVELOPMENT</a><br>
+                <a href="/Branching Pages/Language Songs/gallery.html"style="font-size: inherit">GALLERY</a><br>
+                <a href="/Branching Pages/Language Songs/tutor.html"style="font-size: inherit">TUTORING</a><br>
+                <a href="/Branching Pages/Dashboard/dashboard.html"style="font-size: inherit">DASHBOARD</a><br>
+                <a href="/Branching Pages/Dashboard/login.html"style="font-size: inherit">LOG IN</a><br>
+                <a href="/Branching Pages/Dashboard/register.html"style="font-size: inherit">REGISTER</a><br>
+            </nav>
+        </div>
+    </div>
+</div>
+</body>
+</html>
